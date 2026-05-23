@@ -1,986 +1,1470 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umair - Performance Marketer | Scaling Brands to 5-6 Figures</title>
-    <meta name="description" content="Performance marketing expert specializing in Meta Ads, TikTok Ads, AI-Powered UGC, and Sales Funnels. Helping brands scale to 5-6 figures.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], heading: ['Outfit','sans-serif'] } } }
-        }
-    </script>
-    <style>
-        *{font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;letter-spacing:-0.01em}
-        h1,h2,h3,h4,h5,h6,.heading-font{font-family:'Outfit',sans-serif;letter-spacing:-0.02em}
-        .glow-text{text-shadow:0 0 40px rgba(92,225,230,0.6),0 0 80px rgba(92,225,230,0.3)}
-        .glow-border{box-shadow:0 0 30px rgba(92,225,230,0.15),inset 0 0 30px rgba(92,225,230,0.05);border:1px solid rgba(92,225,230,0.2)}
-        .noise{background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")}
-        @keyframes float{0%,100%{transform:translateY(0px) rotate(0deg)}50%{transform:translateY(-20px) rotate(5deg)}}
-        @keyframes pulse-glow{0%,100%{opacity:1}50%{opacity:0.5}}
-        @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-        .animate-float{animation:float 6s ease-in-out infinite}
-        .animate-pulse-glow{animation:pulse-glow 2s ease-in-out infinite}
-        .animate-ticker{animation:ticker 30s linear infinite}
-        .gradient-text{background:linear-gradient(135deg,#5ce1e6 0%,#a855f7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .card-hover{transition:all 0.3s ease}
-        .card-hover:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(92,225,230,0.2)}
-        .nav-blur{backdrop-filter:blur(12px);background:rgba(2,6,23,0.85)}
-        html{scroll-behavior:smooth}
-        .mobile-menu{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
-        .mobile-menu.open{max-height:600px}
-        .ticker-wrap{overflow:hidden;background:linear-gradient(90deg,rgba(92,225,230,0.15),rgba(168,85,247,0.15));border-bottom:1px solid rgba(92,225,230,0.3)}
-        .ticker-inner{display:flex;width:max-content}
-        .shopify-card{background:linear-gradient(135deg,#1a1f35 0%,#0f1420 100%);border:1px solid rgba(92,225,230,0.25);border-radius:16px;overflow:hidden}
-        .shopify-header{background:linear-gradient(90deg,#96bf48 0%,#5e8e3e 100%)}
-        .shopify-dot{width:12px;height:12px;border-radius:50%;display:inline-block}
-        .ig-grid-item{aspect-ratio:1;background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid rgba(92,225,230,0.2);border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;transition:all 0.3s ease}
-        .ig-grid-item:hover{border-color:rgba(92,225,230,0.6);transform:scale(1.02)}
-        .ig-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.55);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px}
-        .ig-grid-item:hover .ig-overlay{opacity:1}
-        .creative-frame{border:2px solid rgba(92,225,230,0.3);border-radius:16px;overflow:hidden;background:#0f1420;position:relative;transition:all 0.3s ease}
-        .creative-frame:hover{border-color:rgba(92,225,230,0.8);box-shadow:0 0 30px rgba(92,225,230,0.3)}
-        .creative-badge{position:absolute;top:10px;right:10px;background:rgba(92,225,230,0.9);color:#000;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;text-transform:uppercase;z-index:10}
-        .sticky-cta{position:fixed;bottom:24px;right:24px;z-index:999;animation:fadeInUp 0.5s ease}
-        .nav-link-active{color:#5ce1e6!important}
-        .dropdown-menu{opacity:0;visibility:hidden;transform:translateY(-8px);transition:all 0.2s ease}
-        .dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
-        #progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#5ce1e6,#a855f7);z-index:9999;transition:width 0.1s}
-        /* Lightbox */
-        .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9998;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all 0.3s ease}
-        .lightbox.active{opacity:1;visibility:visible}
-        .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:12px;box-shadow:0 0 60px rgba(92,225,230,0.25)}
-        .lightbox-close{position:absolute;top:18px;right:22px;font-size:36px;color:white;cursor:pointer;z-index:9999;opacity:0.7;line-height:1;transition:opacity 0.2s}
-        .lightbox-close:hover{opacity:1}
-        .lightbox-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(92,225,230,0.15);border:1px solid rgba(92,225,230,0.35);color:white;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;z-index:9999;font-size:18px}
-        .lightbox-btn:hover{background:rgba(92,225,230,0.35)}
-        #lb-prev{left:18px}
-        #lb-next{right:18px}
-        /* Scroll to top */
-        #scroll-top{position:fixed;bottom:90px;right:24px;z-index:998;width:40px;height:40px;background:rgba(92,225,230,0.12);border:1px solid rgba(92,225,230,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:all 0.3s;color:#5ce1e6}
-        #scroll-top.visible{opacity:1;pointer-events:auto}
-        #scroll-top:hover{background:rgba(92,225,230,0.3)}
-        /* Form */
-        .form-input{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(92,225,230,0.2);border-radius:10px;padding:12px 16px;color:white;font-size:14px;transition:border-color 0.2s;outline:none}
-        .form-input:focus{border-color:rgba(92,225,230,0.6);background:rgba(92,225,230,0.04)}
-        .form-input::placeholder{color:#64748b}
-        /* Process */
-        .process-connector{display:none}
-        @media(min-width:768px){.process-connector{display:block;position:absolute;top:24px;left:calc(50% + 28px);width:calc(100% - 56px);height:1px;background:linear-gradient(90deg,rgba(92,225,230,0.4),transparent)}}
-        .process-step{position:relative}
-    </style>
-</head>
-<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umair Saleem — Performance Marketing & AI Creative Expert</title>
+<meta name="description" content="Scale your ecommerce brand with Meta Ads, TikTok Ads, AI-powered UGC, and high-converting sales funnels. Pakistan's leading performance marketer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #5ce1e6;
+  --accent-dim: rgba(92,225,230,0.12);
+  --accent-border: rgba(92,225,230,0.2);
+  --bg: #0d1117;
+  --bg2: #111820;
+  --bg3: #161d27;
+  --text: #ffffff;
+  --text-muted: #8b9ab0;
+  --text-dim: #4a5568;
+  --card-bg: #131b25;
+  --card-border: rgba(255,255,255,0.07);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
 
-<!-- Reading Progress Bar -->
-<div id="progress-bar" style="width:0%"></div>
+/* ── TYPOGRAPHY ── */
+.display{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;line-height:0.92;letter-spacing:-0.01em}
+.label-line{display:flex;align-items:center;gap:12px;font-family:'Barlow',sans-serif;font-weight:600;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:28px}
+.label-line::before{content:'';display:block;width:32px;height:2px;background:var(--accent);flex-shrink:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:9999;width:0;transition:width .1s linear}
+
+/* ── LIGHTBOX ── */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:9998;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:.3s}
+.lightbox.active{opacity:1;visibility:visible}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px}
+#lb-close{position:absolute;top:20px;right:24px;font-size:32px;color:#fff;cursor:pointer;opacity:.6;line-height:1;z-index:9999;transition:opacity .2s}
+#lb-close:hover{opacity:1}
+.lb-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:1px solid rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:18px;transition:.2s;z-index:9999}
+.lb-btn:hover{border-color:var(--accent);color:var(--accent)}
+#lb-prev{left:20px}
+#lb-next{right:20px}
+
+/* ── SCROLL TOP ── */
+#scroll-top{position:fixed;bottom:88px;right:24px;z-index:998;width:40px;height:40px;background:var(--bg3);border:1px solid var(--card-border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);opacity:0;pointer-events:none;transition:.3s}
+#scroll-top.visible{opacity:1;pointer-events:auto}
+#scroll-top:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ── WA BUTTON ── */
+.wa-btn{position:fixed;bottom:24px;right:24px;z-index:999;display:flex;align-items:center;gap:8px;padding:12px 20px;background:#25D366;border-radius:40px;font-weight:700;font-size:13px;color:#fff;text-decoration:none;box-shadow:0 8px 32px rgba(37,211,102,.35);transition:.2s}
+.wa-btn:hover{background:#20b857;transform:translateY(-2px)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,17,23,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--card-border)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:24px;letter-spacing:-0.02em;color:#fff;text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-cta{padding:10px 22px;background:var(--accent);color:#000;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:4px;transition:.2s;white-space:nowrap}
+.nav-cta:hover{background:#7eeaee}
+.dropdown{position:relative}
+.dropdown-menu{position:absolute;top:calc(100% + 8px);left:0;background:var(--bg2);border:1px solid var(--card-border);border-radius:6px;min-width:180px;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(-8px);transition:.2s}
+.dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:none}
+.dropdown-menu a{display:block;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:.15s}
+.dropdown-menu a:hover{color:#fff;background:var(--bg3)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;transition:.3s}
+.mobile-menu{display:none;flex-direction:column;background:var(--bg2);border-top:1px solid var(--card-border);padding:16px 0;max-height:0;overflow:hidden;transition:max-height .3s ease}
+.mobile-menu.open{max-height:600px}
+.mobile-menu a{display:block;padding:12px 32px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none}
+.mobile-menu a:hover{color:#fff}
+.mobile-menu .nav-cta{margin:12px 32px 4px;display:inline-block;text-align:center;border-radius:4px}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 42%;padding-top:64px;position:relative;overflow:hidden;align-items:stretch}
+.hero-bg-accent{position:absolute;left:30%;top:20%;width:40%;aspect-ratio:1;background:radial-gradient(circle at center,rgba(92,225,230,.04) 0%,transparent 65%);pointer-events:none;z-index:0}
+.hero-content{display:flex;align-items:center;padding:80px 48px 80px 64px;position:relative;z-index:1}
+.hero-content-inner{width:100%;max-width:640px}
+.hero-img{position:relative;height:100%}
+.hero-img-wrap{position:relative;height:100%;min-height:100vh;overflow:hidden}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.hero-img-wrap::before{content:'';position:absolute;top:0;left:0;bottom:0;width:45%;background:linear-gradient(to right,var(--bg) 0%,transparent 100%);z-index:1;pointer-events:none}
+.hero-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:25%;background:linear-gradient(to top,var(--bg) 0%,transparent 100%);z-index:1;pointer-events:none}
+.hero-badge{position:absolute;bottom:28px;left:20px;z-index:2;background:rgba(13,17,23,.9);border:1px solid rgba(92,225,230,.25);border-radius:6px;padding:14px 18px;backdrop-filter:blur(16px)}
+.hero-badge-label{font-size:10px;color:var(--text-muted);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.hero-badge-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:var(--accent)}
+
+/* ── SECTIONS ── */
+section{padding:100px 0}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+.section-head{margin-bottom:64px}
+.section-head h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(48px,6vw,80px);line-height:.92;letter-spacing:-.01em}
+.section-head h2 .dim{color:rgba(255,255,255,.3)}
+.section-head h2 .accent{color:var(--accent)}
+
+/* ── WHY CHOOSE ── */
+.why-grid{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.why-cards{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.why-card{background:var(--card-bg);padding:28px;transition:.2s}
+.why-card:hover{background:var(--bg3)}
+.why-icon{width:36px;height:36px;border:1px solid var(--accent-border);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--accent)}
+.why-card h4{font-weight:700;font-size:14px;color:#fff;margin-bottom:8px}
+.why-card p{font-size:13px;color:var(--text-muted);line-height:1.6}
+
+/* ── SERVICES ── */
+.services-intro{margin-bottom:64px}
+.services-intro h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(48px,6vw,80px);line-height:.92}
+.services-intro h2 .accent{color:var(--accent)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.service-card{background:var(--card-bg);padding:36px;position:relative;transition:.2s;border-bottom:2px solid transparent}
+.service-card:hover{background:var(--bg3);border-bottom-color:var(--accent)}
+.service-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:52px;color:rgba(255,255,255,.06);line-height:1;margin-bottom:16px}
+.service-icon{color:var(--accent);margin-bottom:20px}
+.service-card h3{font-weight:700;font-size:16px;letter-spacing:.04em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.service-card p{font-size:13px;color:var(--text-muted);line-height:1.7;margin-bottom:20px}
+.service-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(255,255,255,.1);border-radius:3px;color:var(--text-muted)}
+
+/* ── RESULTS HERO ── */
+.results-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:48px}
+.result-card{position:relative;overflow:hidden;aspect-ratio:.75;cursor:zoom-in}
+.result-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;display:block}
+.result-card:hover img{transform:scale(1.04)}
+.result-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 50%,transparent 80%)}
+.result-label-wrap{position:absolute;bottom:0;left:0;padding:24px}
+.result-badge{display:inline-block;padding:5px 12px;background:var(--accent);color:#000;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border-radius:3px;margin-bottom:12px}
+.result-label-wrap h3{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;line-height:.95;color:#fff}
+.result-label-wrap h3 span{color:var(--accent);display:block}
+.result-label-wrap p{font-size:12px;color:rgba(255,255,255,.6);margin-top:8px}
+
+/* ── STATS BAR ── */
+.stats-bar{background:var(--bg2);border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border)}
+.stats-bar-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-bar-item{padding:36px 24px;border-right:1px solid var(--card-border);text-align:center}
+.stat-bar-item:last-child{border-right:none}
+.stat-bar-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:44px;color:var(--accent);line-height:1}
+.stat-bar-sub{font-size:12px;color:var(--text-muted);margin-top:6px;letter-spacing:.04em}
+.stat-bar-note{font-size:10px;color:var(--text-dim);margin-top:3px;letter-spacing:.06em;text-transform:uppercase}
+
+/* ── DASHBOARD PROOF ── */
+.dash-section{background:var(--bg2)}
+.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+.dash-card{background:var(--card-bg);overflow:hidden;transition:.2s}
+.dash-card:hover{background:var(--bg3)}
+.dash-header{padding:10px 14px;display:flex;align-items:center;gap:6px}
+.dash-header.shopify{background:linear-gradient(90deg,#5e8e3e,#96bf48)}
+.dash-header.meta{background:#1877f2}
+.dash-dot{width:10px;height:10px;border-radius:50%}
+.dash-mono{font-size:11px;color:rgba(255,255,255,.65);font-family:monospace;margin-left:8px}
+.dash-img{width:100%;display:block;cursor:zoom-in;transition:opacity .2s}
+.dash-img:hover{opacity:.92}
+.dash-body{padding:20px}
+.dash-body h4{font-weight:700;font-size:13px;color:#fff;margin-bottom:12px;letter-spacing:.04em;text-transform:uppercase}
+.dash-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.dash-metric{background:rgba(255,255,255,.04);border-radius:4px;padding:10px;text-align:center}
+.dash-metric-val{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;color:var(--accent)}
+.dash-metric-label{font-size:10px;color:var(--text-muted);margin-top:2px;letter-spacing:.06em;text-transform:uppercase}
+.dash-meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.meta-header-bar{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+
+/* ── MEETINGS ── */
+.meetings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:48px}
+.meeting-card{position:relative;overflow:hidden;background:var(--card-bg)}
+.meeting-img{width:100%;height:220px;object-fit:cover;object-position:top;display:block;cursor:zoom-in;transition:transform .3s}
+.meeting-card:hover .meeting-img{transform:scale(1.03)}
+.meeting-overlay{position:absolute;top:0;left:0;right:0;height:220px;background:linear-gradient(to top,rgba(13,17,23,.9) 0%,transparent 60%);pointer-events:none}
+.meeting-badges{position:absolute;top:12px;left:12px;display:flex;gap:6px}
+.badge-live{display:flex;align-items:center;gap:5px;padding:4px 9px;background:rgba(220,38,38,.85);border-radius:3px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.badge-live::before{content:'';width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 1.5s infinite}
+.badge-platform{padding:4px 9px;background:rgba(13,17,23,.8);border-radius:3px;font-size:10px;font-weight:700;color:rgba(255,255,255,.7);font-family:monospace}
+.meeting-info{padding:16px 20px}
+.meeting-info h4{font-weight:700;font-size:14px;color:#fff;margin-bottom:4px}
+.meeting-info p{font-size:12px;color:var(--text-muted);margin-bottom:12px}
+.meeting-tags{display:flex;gap:6px;flex-wrap:wrap}
+.mtag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;background:var(--accent-dim);color:var(--accent)}
+.mtag.purple{background:rgba(168,85,247,.12);color:#c084fc}
+.mtag.green{background:rgba(34,197,94,.1);color:#4ade80}
+.mtag.pink{background:rgba(236,72,153,.1);color:#f472b6}
+
+/* ── TESTIMONIALS ── */
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:48px;max-width:960px}
+.testi-card{background:var(--card-bg);overflow:hidden}
+.testi-header{padding:14px 18px;background:rgba(37,211,102,.08);border-bottom:1px solid rgba(37,211,102,.1);display:flex;align-items:center;gap:10px}
+.testi-header svg{color:#25D366}
+.testi-header-text{font-weight:700;font-size:13px;color:#fff}
+.testi-header-sub{font-size:11px;color:var(--text-muted)}
+.testi-img{width:100%;display:block;cursor:zoom-in}
+.testi-footer{padding:12px 18px;background:rgba(0,0,0,.2)}
+.testi-quote{font-size:11px;font-weight:700;color:var(--accent)}
+
+/* ── WORK SAMPLES ── */
+.work-section{background:var(--bg2)}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+.ig-profile-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.ig-profile-icon{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c,#fda085);display:flex;align-items:center;justify-content:center}
+.ig-handle{font-weight:700;font-size:14px;color:#fff}
+.ig-handle-sub{font-size:12px;color:var(--text-muted)}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:16px}
+.ig-item{aspect-ratio:1;overflow:hidden;position:relative;cursor:pointer;background:var(--card-bg)}
+.ig-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.ig-item:hover img{transform:scale(1.06)}
+.ig-item-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);opacity:0;transition:.2s;display:flex;align-items:center;justify-content:center}
+.ig-item:hover .ig-item-overlay{opacity:1}
+.ig-item-overlay span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;text-align:center;padding:0 8px}
+.ig-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border:1px solid rgba(225,48,108,.3);border-radius:4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#E1306C;text-decoration:none;transition:.2s}
+.ig-btn:hover{background:rgba(225,48,108,.06)}
+.creative-stack{display:flex;flex-direction:column;gap:3px}
+.creative-card{background:var(--card-bg);overflow:hidden;position:relative;transition:.2s}
+.creative-card:hover{background:var(--bg3)}
+.creative-badge-top{position:absolute;top:10px;right:10px;z-index:10;padding:4px 10px;background:rgba(13,17,23,.85);border:1px solid var(--accent);border-radius:3px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.creative-card video,.creative-card img{width:100%;display:block;max-height:260px;object-fit:cover}
+.creative-card-body{padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.creative-card-body h4{font-weight:700;font-size:13px;color:#fff}
+.creative-card-body p{font-size:11px;color:var(--text-muted)}
+.creative-pill{font-size:10px;font-weight:700;padding:4px 10px;border-radius:3px;background:var(--accent-dim);color:var(--accent);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+
+/* ── HOW I WORK ── */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
+.process-card{background:var(--card-bg);padding:36px 28px;position:relative;transition:.2s;border-top:2px solid transparent}
+.process-card:hover{background:var(--bg3);border-top-color:var(--accent)}
+.process-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:64px;color:rgba(255,255,255,.05);line-height:1;margin-bottom:20px}
+.process-card h3{font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:10px}
+.process-card p{font-size:13px;color:var(--text-muted);line-height:1.65}
+
+/* ── CONTACT ── */
+.contact-section{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:48px}
+.contact-links{display:flex;flex-direction:column;gap:3px}
+.contact-link{display:flex;align-items:center;gap:16px;padding:20px 24px;background:var(--card-bg);text-decoration:none;transition:.2s;border-left:2px solid transparent}
+.contact-link:hover{background:var(--bg3);border-left-color:var(--accent)}
+.contact-link-icon{width:40px;height:40px;border:1px solid var(--card-border);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.2s}
+.contact-link:hover .contact-link-icon{border-color:var(--accent)}
+.contact-link-text h4{font-weight:700;font-size:14px;color:#fff;margin-bottom:2px}
+.contact-link-text p{font-size:12px;color:var(--text-muted)}
+.contact-link-arrow{margin-left:auto;color:var(--text-dim);font-size:18px;transition:.2s}
+.contact-link:hover .contact-link-arrow{color:var(--accent)}
+.contact-cta-box{background:var(--card-bg);padding:48px;border-top:2px solid var(--accent)}
+.contact-cta-box h3{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;text-transform:uppercase;line-height:.95;margin-bottom:20px}
+.contact-cta-box h3 span{color:var(--accent);display:block}
+.contact-cta-box p{font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:32px}
+
+/* ── FOOTER ── */
+footer{background:var(--bg);border-top:1px solid var(--card-border);padding:64px 0 32px}
+.footer-inner{max-width:1280px;margin:0 auto;padding:0 32px}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:64px;margin-bottom:48px}
+.footer-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;letter-spacing:-.02em;margin-bottom:16px}
+.footer-logo span{color:var(--accent)}
+.footer-bio{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:24px}
+.footer-social{display:flex;gap:12px}
+.social-icon{width:36px;height:36px;border:1px solid var(--card-border);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);text-decoration:none;transition:.2s}
+.social-icon:hover{border-color:var(--accent);color:var(--accent)}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-bottom{border-top:1px solid var(--card-border);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:var(--text-dim)}
+
+.hero-tag{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.hero-tag::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);display:block;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;line-height:.88;letter-spacing:-.01em;margin-bottom:28px}
+.hero h1 .dim{font-size:clamp(52px,6vw,88px);color:rgba(255,255,255,.22);display:block}
+.hero h1 .bright{font-size:clamp(64px,8vw,120px);color:#fff;display:block}
+.hero h1 .accent{font-size:clamp(64px,8vw,120px);color:var(--accent);display:block}
+.hero-sub{font-size:17px;color:var(--text-muted);line-height:1.75;max-width:500px;margin-bottom:36px}
+.hero-sub strong{color:#fff;font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
+.hero-stats{display:flex;gap:40px;padding-top:32px;border-top:1px solid var(--card-border)}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:40px;color:var(--accent);line-height:1}
+.stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;font-weight:500;letter-spacing:.04em}
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr 38%}
+  .hero-content{padding:80px 32px 80px 48px}
+}
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-img{height:480px;order:-1}
+  .hero-img-wrap{min-height:480px}
+  .hero-img-wrap::before{width:20%}
+  .hero-content{padding:48px 24px 64px}
+  .hero-stats{gap:24px}
+  .why-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .results-cards{grid-template-columns:1fr 1fr}
+  .dash-grid{grid-template-columns:1fr 1fr}
+  .meetings-grid{grid-template-columns:1fr 1fr}
+  .process-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:40px}
+  .work-grid{grid-template-columns:1fr}
+  .why-cards{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .hero-img{height:360px}
+  .hero-img-wrap{min-height:360px}
+  .hero-content{padding:28px 20px 40px}
+  .hero-btns{flex-direction:column}
+  .btn-primary,.btn-outline{justify-content:center}
+  .hero-stats{gap:16px;flex-wrap:wrap}
+  .stat-num{font-size:28px}
+  .services-grid{grid-template-columns:1fr}
+  .results-cards{grid-template-columns:1fr}
+  .dash-grid{grid-template-columns:1fr}
+  .meetings-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr}
+  .stats-bar-inner{grid-template-columns:1fr 1fr}
+  .stat-bar-item{border-right:none;border-bottom:1px solid var(--card-border)}
+  .footer-top{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:flex}
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
 
 <!-- Lightbox -->
 <div id="lightbox" class="lightbox">
-    <span class="lightbox-close" id="lb-close">&times;</span>
-    <div class="lightbox-btn" id="lb-prev">&#8592;</div>
-    <img id="lb-img" src="" alt="Lightbox Image">
-    <div class="lightbox-btn" id="lb-next">&#8594;</div>
+  <span id="lb-close">&times;</span>
+  <div class="lb-btn" id="lb-prev">&#8592;</div>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-btn" id="lb-next">&#8594;</div>
 </div>
 
-<!-- Scroll to Top -->
+<!-- Scroll Top -->
 <div id="scroll-top" title="Back to top">
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
 </div>
 
-<!-- Ticker Bar -->
-<div class="ticker-wrap py-2 relative z-40">
-    <div class="animate-ticker ticker-inner">
-        <span class="flex items-center gap-8 px-8 text-sm font-semibold text-[#5ce1e6] whitespace-nowrap">
-            <span>🔥 Currently Accepting 2 New Clients for June 2026</span>
-            <span class="text-gray-400">•</span>
-            <span>📈 Avg ROAS: 6.94x · 51 Campaigns</span>
-            <span class="text-gray-400">•</span>
-            <span>🤖 AI-Powered UGC Creatives Now Available</span>
-            <span class="text-gray-400">•</span>
-            <span>💰 5,769+ Purchases · Rs1.29Cr+ Revenue</span>
-            <span class="text-gray-400">•</span>
-            <span>🚀 Pakistan's Leading Performance Marketer</span>
-            <span class="text-gray-400">•</span>
-            <span>✅ Certified Shopify Expert & Meta Ads Pro</span>
-            <span class="text-gray-400">•</span>
-        </span>
-        <span class="flex items-center gap-8 px-8 text-sm font-semibold text-[#5ce1e6] whitespace-nowrap">
-            <span>🔥 Currently Accepting 2 New Clients for June 2026</span>
-            <span class="text-gray-400">•</span>
-            <span>📈 Avg ROAS: 6.94x · 51 Campaigns</span>
-            <span class="text-gray-400">•</span>
-            <span>🤖 AI-Powered UGC Creatives Now Available</span>
-            <span class="text-gray-400">•</span>
-            <span>💰 5,769+ Purchases · Rs1.29Cr+ Revenue</span>
-            <span class="text-gray-400">•</span>
-            <span>🚀 Pakistan's Leading Performance Marketer</span>
-            <span class="text-gray-400">•</span>
-            <span>✅ Certified Shopify Expert & Meta Ads Pro</span>
-            <span class="text-gray-400">•</span>
-        </span>
-    </div>
-</div>
+<!-- WhatsApp -->
+<a href="https://wa.me/923085539428?text=Hi%20Umair!%20I%20want%20to%20scale%20my%20ecommerce%20brand." target="_blank" rel="noopener noreferrer" class="wa-btn" title="Chat on WhatsApp">
+  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  WhatsApp Me
+</a>
 
-<!-- Navigation -->
-<nav class="fixed top-8 w-full z-50 nav-blur border-b border-[#5ce1e6]/20" id="main-nav">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-            <h1 class="text-2xl font-bold heading-font gradient-text">UMAIR</h1>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#home" class="nav-link text-sm font-semibold uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] transition-colors">Home</a>
-                <a href="#about" class="nav-link text-sm font-semibold uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] transition-colors">About</a>
-                <a href="#services" class="nav-link text-sm font-semibold uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] transition-colors">Services</a>
-                <div class="relative dropdown">
-                    <button class="nav-link text-sm font-semibold uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] flex items-center gap-1">
-                        Results <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="dropdown-menu absolute top-8 left-0 w-48 nav-blur border border-[#5ce1e6]/20 rounded-xl overflow-hidden">
-                        <a href="#results" class="block px-4 py-3 text-sm text-gray-300 hover:text-[#5ce1e6] hover:bg-white/5 transition-colors">📊 Ad Metrics</a>
-                        <a href="#shopify-results" class="block px-4 py-3 text-sm text-gray-300 hover:text-[#5ce1e6] hover:bg-white/5 transition-colors">🛍️ Shopify Results</a>
-                        <a href="#portfolio" class="block px-4 py-3 text-sm text-gray-300 hover:text-[#5ce1e6] hover:bg-white/5 transition-colors">📁 Case Studies</a>
-                    </div>
-                </div>
-                <a href="#client-meetings" class="nav-link text-sm font-semibold uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] transition-colors">Clients</a>
-                <a href="#testimonials" class="nav-link text-sm font-semibold uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] transition-colors">Reviews</a>
-                <a href="#work-samples" class="nav-link text-sm font-semibold uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] transition-colors">Work</a>
-                <a href="#contact" class="nav-link text-sm font-semibold uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] transition-colors">Contact</a>
-                <a href="https://calendly.com/umairecomdrift/30min" target="_blank" rel="noopener noreferrer"
-                   class="ml-2 px-5 py-2 bg-gradient-to-r from-[#5ce1e6] to-purple-600 rounded-lg text-sm font-bold hover:shadow-lg hover:shadow-[#5ce1e6]/30 transition-all text-black">
-                    Book a Call →
-                </a>
-            </div>
-            <div class="md:hidden">
-                <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white">
-                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">UMAIR<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">Why Me</a>
+      <a href="#services">Services</a>
+      <div class="dropdown">
+        <a href="#results">Results ▾</a>
+        <div class="dropdown-menu">
+          <a href="#results">📊 Ad Metrics</a>
+          <a href="#dashboards">🛍 Shopify Proof</a>
+          <a href="#portfolio">📁 Case Studies</a>
         </div>
+      </div>
+      <a href="#client-meetings">Clients</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#work-samples">Work</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div id="mobile-menu" class="mobile-menu md:hidden nav-blur border-t border-[#5ce1e6]/20">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-            <a href="#home" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] hover:bg-white/5">Home</a>
-            <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] hover:bg-white/5">About</a>
-            <a href="#services" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] hover:bg-white/5">Services</a>
-            <a href="#results" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] hover:bg-white/5">Ad Metrics</a>
-            <a href="#shopify-results" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] hover:bg-white/5">Shopify Results</a>
-            <a href="#portfolio" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] hover:bg-white/5">Case Studies</a>
-            <a href="#client-meetings" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] hover:bg-white/5">Clients</a>
-            <a href="#testimonials" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] hover:bg-white/5">Reviews</a>
-            <a href="#work-samples" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] hover:bg-white/5">Work Samples</a>
-            <a href="#contact" onclick="toggleMobileMenu()" class="block px-3 py-2 text-base font-medium uppercase tracking-wider text-gray-400 hover:text-[#5ce1e6] hover:bg-white/5">Contact</a>
-            <a href="https://calendly.com/umairecomdrift/30min" target="_blank" onclick="toggleMobileMenu()" class="block mx-3 my-2 px-4 py-3 bg-gradient-to-r from-[#5ce1e6] to-purple-600 rounded-lg text-center font-bold text-black">Book a Call →</a>
-        </div>
+    <a href="https://calendly.com/umairecomdrift/30min" target="_blank" class="nav-cta">Book a Call →</a>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
     </div>
+  </div>
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="#about" onclick="toggleMenu()">Why Me</a>
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#results" onclick="toggleMenu()">Results</a>
+    <a href="#dashboards" onclick="toggleMenu()">Shopify Proof</a>
+    <a href="#client-meetings" onclick="toggleMenu()">Clients</a>
+    <a href="#testimonials" onclick="toggleMenu()">Reviews</a>
+    <a href="#work-samples" onclick="toggleMenu()">Work</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a href="https://calendly.com/umairecomdrift/30min" target="_blank" class="nav-cta" onclick="toggleMenu()">Book a Call →</a>
+  </div>
 </nav>
 
-<!-- Hero -->
-<section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden noise pt-24">
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-[#5ce1e6]/20 rounded-full blur-3xl animate-pulse-glow"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse-glow" style="animation-delay:1s;"></div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8">
-                <div class="space-y-4">
-                    <p class="text-[#5ce1e6] text-sm font-bold uppercase tracking-widest">Performance Marketing Expert</p>
-                    <h1 class="text-5xl md:text-7xl font-black heading-font leading-tight">
-                        Scaling Brands to
-                        <span class="glow-text gradient-text block">6-7 Figures</span>
-                    </h1>
-                    <p class="text-xl text-gray-400 leading-relaxed">
-                        Meta Ads • TikTok Ads • AI-Powered UGC • Sales Funnels<br>
-                        <span class="text-[#5ce1e6] font-bold">7.4K+ Community</span> • Pakistan's Leading Growth Marketer
-                    </p>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://calendly.com/umairecomdrift/30min" target="_blank" rel="noopener noreferrer"
-                       class="group px-8 py-4 bg-gradient-to-r from-[#5ce1e6] to-purple-600 rounded-lg font-bold text-lg hover:shadow-2xl hover:shadow-[#5ce1e6]/50 transition-all flex items-center justify-center gap-2 text-black">
-                        Book a Strategy Call
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </a>
-                    <a href="#work-samples" class="px-8 py-4 border-2 border-[#5ce1e6] rounded-lg font-bold text-lg hover:bg-[#5ce1e6]/10 transition-all text-center">View My Work</a>
-                </div>
-                <div class="flex items-center gap-6 pt-4">
-                    <a href="https://www.linkedin.com/in/umairsaleemofficial/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#5ce1e6] transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/umair.ecomdrift/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#5ce1e6] transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="mailto:umairecomdrift@gmail.com" class="text-gray-400 hover:text-[#5ce1e6] transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="relative animate-float">
-                <div class="relative w-full aspect-square max-w-md mx-auto">
-                    <div class="absolute inset-0 bg-gradient-to-br from-[#5ce1e6]/30 to-purple-600/30 rounded-3xl blur-2xl"></div>
-                    <div class="relative glow-border rounded-3xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 p-2">
-                        <img src="umair-profile1.jpeg" alt="Umair - Performance Marketing Expert" class="w-full h-full object-cover rounded-2xl">
-                    </div>
-                </div>
-            </div>
+<!-- ── HERO ── -->
+<section id="home" class="hero">
+  <div class="hero-bg-accent"></div>
+
+  <!-- Left: Content -->
+  <div class="hero-content">
+    <div class="hero-content-inner">
+      <div class="hero-tag">Performance Marketing Expert · Pakistan</div>
+      <h1>
+        <span class="dim">SCALE YOUR</span>
+        <span class="bright">ECOMMERCE</span>
+        <span class="accent">BRAND.</span>
+      </h1>
+      <p class="hero-sub">
+        Meta Ads • TikTok Ads • AI-Powered UGC • Sales Funnels<br>
+        <strong>7.4K+ Community</strong> — I help ecommerce brands turn ad spend into consistent, scalable revenue.
+      </p>
+      <div class="hero-btns">
+        <a href="https://calendly.com/umairecomdrift/30min" target="_blank" class="btn-primary">
+          Book Free Strategy Call
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="https://wa.me/923085539428?text=Hi%20Umair!%20I%20want%20to%20scale%20my%20ecommerce%20brand." target="_blank" class="btn-outline">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Me
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">6.94x</div>
+          <div class="stat-label">Average ROAS</div>
         </div>
+        <div class="stat-item">
+          <div class="stat-num">5,769+</div>
+          <div class="stat-label">Purchases Generated</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">51</div>
+          <div class="stat-label">Campaigns Managed</div>
+        </div>
+      </div>
     </div>
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <svg class="w-8 h-8 text-[#5ce1e6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+  </div>
+
+  <!-- Right: Full-bleed image -->
+  <div class="hero-img">
+    <div class="hero-img-wrap">
+      <img src="umair-profile1.jpeg" alt="Umair Saleem — Performance Marketing Expert">
+      <div class="hero-badge">
+        <div class="hero-badge-label">Verified Meta Data</div>
+        <div class="hero-badge-val">Rs1.29Cr+ Revenue</div>
+      </div>
     </div>
+  </div>
+
 </section>
 
-<!-- About -->
-<section id="about" class="py-24 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-5xl md:text-6xl font-black heading-font mb-4 gradient-text">About Me</h2>
-            <p class="text-xl text-gray-400">Building the future of performance marketing</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8 text-center mb-16">
-            <div class="p-8"><div class="text-5xl font-black heading-font gradient-text mb-2">10+</div><div class="text-gray-400">Brands Scaled</div></div>
-            <div class="p-8"><div class="text-5xl font-black heading-font gradient-text mb-2">7.4K</div><div class="text-gray-400">Community Members</div></div>
-            <div class="p-8"><div class="text-5xl font-black heading-font gradient-text mb-2">51+</div><div class="text-gray-400">Campaigns Managed</div></div>
-        </div>
-        <div class="max-w-4xl mx-auto text-center space-y-6">
-            <p class="text-xl text-gray-300 leading-relaxed">From launching my first campaign to building a 7.4K+ community, I've dedicated my career to mastering the art and science of digital growth. Specializing in Meta & TikTok Ads, I've helped dozens of brands break through to 6 and 7-figure revenues.</p>
-            <p class="text-xl text-gray-300 leading-relaxed">My approach combines data-driven strategy with AI-powered creative, allowing brands to scale profitably while maintaining creative excellence. Every campaign is built on proven frameworks refined through millions in ad spend.</p>
-        </div>
+<!-- ── STATS BAR ── -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-bar-item">
+      <div class="stat-bar-num">5,769+</div>
+      <div class="stat-bar-sub">Total Purchases</div>
+      <div class="stat-bar-note">Across 51 Campaigns</div>
     </div>
-</section>
-
-<!-- Services -->
-<section id="services" class="py-24 bg-slate-900/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-5xl md:text-6xl font-black heading-font mb-4 gradient-text">Services</h2>
-            <p class="text-xl text-gray-400">Comprehensive solutions for scaling your brand</p>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="card-hover glow-border rounded-2xl p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 flex items-center justify-center mb-6"><svg class="w-8 h-8 text-[#5ce1e6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg></div>
-                <h3 class="text-2xl font-bold heading-font mb-4">Meta Ads Strategy</h3>
-                <p class="text-gray-400">Data-driven campaigns optimized for ROAS. From creative testing to scaling, I handle the entire funnel.</p>
-            </div>
-            <div class="card-hover glow-border rounded-2xl p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 flex items-center justify-center mb-6"><svg class="w-8 h-8 text-[#5ce1e6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg></div>
-                <h3 class="text-2xl font-bold heading-font mb-4">E-commerce Scaling</h3>
-                <p class="text-gray-400">End-to-end growth systems for D2C brands. Proven frameworks that consistently hit 6-7 figures.</p>
-            </div>
-            <div class="card-hover glow-border rounded-2xl p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 flex items-center justify-center mb-6"><svg class="w-8 h-8 text-[#5ce1e6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div>
-                <h3 class="text-2xl font-bold heading-font mb-4">Shopify Development</h3>
-                <p class="text-gray-400">High-converting Shopify stores built for performance. Beautiful design meets conversion optimization.</p>
-            </div>
-            <div class="card-hover glow-border rounded-2xl p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 flex items-center justify-center mb-6"><svg class="w-8 h-8 text-[#5ce1e6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg></div>
-                <h3 class="text-2xl font-bold heading-font mb-4">AI-Powered UGC</h3>
-                <p class="text-gray-400">Cutting-edge AI creatives that convert. Scale your ad production at a fraction of the cost.</p>
-            </div>
-        </div>
-        <div class="mt-16 text-center">
-            <a href="https://calendly.com/umairecomdrift/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#5ce1e6] to-purple-600 rounded-lg font-bold text-lg hover:shadow-2xl hover:shadow-[#5ce1e6]/50 transition-all text-black">Schedule a Consultation →</a>
-        </div>
+    <div class="stat-bar-item">
+      <div class="stat-bar-num">6.94x</div>
+      <div class="stat-bar-sub">Average ROAS</div>
+      <div class="stat-bar-note">Jun 2024 – Jul 2025</div>
     </div>
-</section>
-
-<!-- Proven Results -->
-<section id="results" class="py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-5xl md:text-6xl font-black heading-font mb-4 gradient-text">Proven Results</h2>
-            <p class="text-xl text-gray-400">Real metrics from real campaigns</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="text-center p-8 glow-border rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="text-6xl font-black heading-font gradient-text mb-2">6.94x</div>
-                <div class="text-xl font-bold text-white mb-1">Average ROAS</div>
-                <div class="text-sm text-gray-400">Verified — 51 campaigns</div>
-            </div>
-            <div class="text-center p-8 glow-border rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="text-6xl font-black heading-font gradient-text mb-2">5,769+</div>
-                <div class="text-xl font-bold text-white mb-1">Total Purchases</div>
-                <div class="text-sm text-gray-400">Verified Meta Ads data</div>
-            </div>
-            <div class="text-center p-8 glow-border rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="text-6xl font-black heading-font gradient-text mb-2">Rs1.29Cr</div>
-                <div class="text-xl font-bold text-white mb-1">Purchase Revenue</div>
-                <div class="text-sm text-gray-400">Across all client stores</div>
-            </div>
-        </div>
+    <div class="stat-bar-item">
+      <div class="stat-bar-num">15,054</div>
+      <div class="stat-bar-sub">Adds to Cart</div>
+      <div class="stat-bar-note">8,937 Checkouts</div>
     </div>
-</section>
-
-<!-- Shopify + Meta Results -->
-<section id="shopify-results" class="py-24 bg-slate-900/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="inline-block px-4 py-1 bg-[#96bf48]/20 text-[#96bf48] rounded-full text-xs font-bold uppercase tracking-widest mb-4">Live Dashboard Proof</span>
-            <h2 class="text-5xl md:text-6xl font-black heading-font mb-4 gradient-text">Real Store Results</h2>
-            <p class="text-xl text-gray-400">Straight from Shopify & Meta Ads Manager — no fluff, just numbers</p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
-            <div class="text-center p-5 glow-border rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="text-3xl font-black heading-font gradient-text mb-1">5,769+</div>
-                <div class="text-xs text-gray-400 uppercase tracking-wider">Total Purchases</div>
-                <div class="text-xs text-[#96bf48] mt-1 font-semibold">Across 51 Campaigns</div>
-            </div>
-            <div class="text-center p-5 glow-border rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="text-3xl font-black heading-font gradient-text mb-1">6.94x</div>
-                <div class="text-xs text-gray-400 uppercase tracking-wider">Avg Purchase ROAS</div>
-                <div class="text-xs text-[#96bf48] mt-1 font-semibold">Jun 2024 – Jul 2025</div>
-            </div>
-            <div class="text-center p-5 glow-border rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="text-3xl font-black heading-font gradient-text mb-1">15,054</div>
-                <div class="text-xs text-gray-400 uppercase tracking-wider">Adds to Cart</div>
-                <div class="text-xs text-[#96bf48] mt-1 font-semibold">8,937 Checkouts</div>
-            </div>
-            <div class="text-center p-5 glow-border rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="text-3xl font-black heading-font gradient-text mb-1">Rs1.29Cr+</div>
-                <div class="text-xs text-gray-400 uppercase tracking-wider">Conversion Value</div>
-                <div class="text-xs text-[#96bf48] mt-1 font-semibold">Verified Meta Data</div>
-            </div>
-        </div>
-        <h3 class="text-2xl font-bold heading-font text-white mb-6 flex items-center gap-3">
-            <span class="w-8 h-8 rounded-lg bg-[#96bf48] flex items-center justify-center"><svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg></span>
-            Shopify Live Dashboards
-        </h3>
-        <div class="grid md:grid-cols-3 gap-6 mb-14">
-            <div class="shopify-card card-hover">
-                <div class="shopify-header px-4 py-2 flex items-center gap-2">
-                    <span class="shopify-dot bg-red-400"></span><span class="shopify-dot bg-yellow-400"></span><span class="shopify-dot bg-green-400"></span>
-                    <span class="ml-3 text-xs text-white/70 font-mono">Shopify Mobile App</span>
-                </div>
-                <img src="shopify1.jpeg" alt="Shopify - $735 sales, 4.89% CVR" class="w-full object-cover cursor-zoom-in" data-lb-group="shopify">
-                <div class="p-4"><h4 class="font-bold heading-font text-white mb-3">Daily Sales Dashboard</h4>
-                <div class="grid grid-cols-3 gap-2">
-                    <div class="text-center bg-slate-800/60 rounded-lg p-3"><div class="text-base font-black text-[#96bf48]">$735</div><div class="text-xs text-gray-400">Today's Sales</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-3"><div class="text-base font-black text-[#5ce1e6]">+14%</div><div class="text-xs text-gray-400">Growth</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-3"><div class="text-base font-black text-[#5ce1e6]">4.89%</div><div class="text-xs text-gray-400">Conv. Rate</div></div>
-                </div></div>
-            </div>
-            <div class="shopify-card card-hover">
-                <div class="shopify-header px-4 py-2 flex items-center gap-2">
-                    <span class="shopify-dot bg-red-400"></span><span class="shopify-dot bg-yellow-400"></span><span class="shopify-dot bg-green-400"></span>
-                    <span class="ml-3 text-xs text-white/70 font-mono">Shopify Admin — Nov 9, 2025</span>
-                </div>
-                <img src="shopify2.jpeg" alt="Shopify - $689 sales, +108% sessions" class="w-full object-cover cursor-zoom-in" data-lb-group="shopify">
-                <div class="p-4"><h4 class="font-bold heading-font text-white mb-3">Sessions & Revenue Spike</h4>
-                <div class="grid grid-cols-3 gap-2">
-                    <div class="text-center bg-slate-800/60 rounded-lg p-3"><div class="text-base font-black text-[#96bf48]">$689</div><div class="text-xs text-gray-400">Total Sales</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-3"><div class="text-base font-black text-[#5ce1e6]">+108%</div><div class="text-xs text-gray-400">Sessions</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-3"><div class="text-base font-black text-[#5ce1e6]">4.67%</div><div class="text-xs text-gray-400">Conv. Rate</div></div>
-                </div></div>
-            </div>
-            <div class="shopify-card card-hover">
-                <div class="shopify-header px-4 py-2 flex items-center gap-2">
-                    <span class="shopify-dot bg-red-400"></span><span class="shopify-dot bg-yellow-400"></span><span class="shopify-dot bg-green-400"></span>
-                    <span class="ml-3 text-xs text-white/70 font-mono">Shopify Mobile — Yesterday</span>
-                </div>
-                <img src="shopify3.jpeg" alt="Shopify - $3060 sales, 8.68% CVR, 50+ orders" class="w-full object-cover cursor-zoom-in" data-lb-group="shopify">
-                <div class="p-4"><h4 class="font-bold heading-font text-white mb-3">Peak Revenue Day</h4>
-                <div class="grid grid-cols-3 gap-2">
-                    <div class="text-center bg-slate-800/60 rounded-lg p-3"><div class="text-base font-black text-[#96bf48]">$3,060</div><div class="text-xs text-gray-400">Total Sales</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-3"><div class="text-base font-black text-[#5ce1e6]">50+</div><div class="text-xs text-gray-400">Orders</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-3"><div class="text-base font-black text-[#5ce1e6]">8.68%</div><div class="text-xs text-gray-400">Conv. Rate</div></div>
-                </div></div>
-            </div>
-        </div>
-        <h3 class="text-2xl font-bold heading-font text-white mb-6 flex items-center gap-3">
-            <span class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">f</span>
-            Meta Ads Manager — Campaign Data
-        </h3>
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="shopify-card card-hover">
-                <div class="bg-blue-900/40 border-b border-blue-500/30 px-4 py-2 flex items-center gap-2">
-                    <span class="shopify-dot bg-red-400"></span><span class="shopify-dot bg-yellow-400"></span><span class="shopify-dot bg-green-400"></span>
-                    <span class="ml-3 text-xs text-blue-300 font-mono">Meta Ads Manager — 51 Campaigns · Jun 2024–Jul 2025</span>
-                </div>
-                <img src="meta1.jpg" alt="Meta Ads - 6.94x ROAS, 5769 purchases" class="w-full object-cover cursor-zoom-in" data-lb-group="meta">
-                <div class="p-4"><h4 class="font-bold heading-font text-white mb-3">51 Active Campaigns — Full Overview</h4>
-                <div class="grid grid-cols-4 gap-2">
-                    <div class="text-center bg-slate-800/60 rounded-lg p-2"><div class="text-sm font-black text-[#5ce1e6]">5,769</div><div class="text-xs text-gray-400">Purchases</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-2"><div class="text-sm font-black text-[#96bf48]">6.94x</div><div class="text-xs text-gray-400">Avg ROAS</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-2"><div class="text-sm font-black text-[#5ce1e6]">15,054</div><div class="text-xs text-gray-400">Add to Cart</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-2"><div class="text-sm font-black text-[#5ce1e6]">Rs567</div><div class="text-xs text-gray-400">Cost/Purchase</div></div>
-                </div></div>
-            </div>
-            <div class="shopify-card card-hover">
-                <div class="bg-blue-900/40 border-b border-blue-500/30 px-4 py-2 flex items-center gap-2">
-                    <span class="shopify-dot bg-red-400"></span><span class="shopify-dot bg-yellow-400"></span><span class="shopify-dot bg-green-400"></span>
-                    <span class="ml-3 text-xs text-blue-300 font-mono">Meta Ads Manager — Ad Set Detail · Max Date Range</span>
-                </div>
-                <img src="meta2.jpeg" alt="Meta Ads - 5.20x ROAS, 2954 purchases, 10.99x top ROAS" class="w-full object-cover cursor-zoom-in" data-lb-group="meta">
-                <div class="p-4"><h4 class="font-bold heading-font text-white mb-3">Ad Set Breakdown — All-Time Data</h4>
-                <div class="grid grid-cols-4 gap-2">
-                    <div class="text-center bg-slate-800/60 rounded-lg p-2"><div class="text-sm font-black text-[#5ce1e6]">2,954</div><div class="text-xs text-gray-400">Purchases</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-2"><div class="text-sm font-black text-[#96bf48]">5.20x</div><div class="text-xs text-gray-400">Avg ROAS</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-2"><div class="text-sm font-black text-[#5ce1e6]">12,172</div><div class="text-xs text-gray-400">Add to Cart</div></div>
-                    <div class="text-center bg-slate-800/60 rounded-lg p-2"><div class="text-sm font-black text-[#5ce1e6]">10.99x</div><div class="text-xs text-gray-400">Top ROAS</div></div>
-                </div></div>
-            </div>
-        </div>
+    <div class="stat-bar-item">
+      <div class="stat-bar-num">Rs1.29Cr</div>
+      <div class="stat-bar-sub">Purchase Revenue</div>
+      <div class="stat-bar-note">Verified Meta Data</div>
     </div>
-</section>
-
-<!-- Case Studies -->
-<section id="portfolio" class="py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-5xl md:text-6xl font-black heading-font mb-4 gradient-text">Case Studies</h2>
-            <p class="text-xl text-gray-400">Success stories from Pakistan's fastest-growing brands</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8 mb-16">
-            <div class="card-hover glow-border rounded-2xl p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <span class="inline-block px-3 py-1 bg-[#5ce1e6]/20 text-[#5ce1e6] rounded-full text-xs font-bold uppercase mb-4">E-commerce</span>
-                <h3 class="text-2xl font-bold heading-font mb-3">Premium Fashion Brand</h3>
-                <p class="text-gray-400 mb-6">Complete brand transformation: from $15K to $120K monthly revenue in 4 months using Meta Ads + TikTok strategy.</p>
-                <div class="grid grid-cols-3 gap-4 pt-4 border-t border-[#5ce1e6]/20">
-                    <div class="text-center"><div class="text-xl font-bold text-[#5ce1e6]">+700%</div><div class="text-xs text-gray-400">REVENUE</div></div>
-                    <div class="text-center"><div class="text-xl font-bold text-[#5ce1e6]">5.4x</div><div class="text-xs text-gray-400">ROAS</div></div>
-                    <div class="text-center"><div class="text-xl font-bold text-[#5ce1e6]">-52%</div><div class="text-xs text-gray-400">CAC</div></div>
-                </div>
-            </div>
-            <div class="card-hover glow-border rounded-2xl p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs font-bold uppercase mb-4">Beauty</span>
-                <h3 class="text-2xl font-bold heading-font mb-3">Organic Skincare Launch</h3>
-                <p class="text-gray-400 mb-6">Zero to $80K in first 60 days. Built complete sales funnel, UGC strategy, and scaling system from scratch.</p>
-                <div class="grid grid-cols-3 gap-4 pt-4 border-t border-[#5ce1e6]/20">
-                    <div class="text-center"><div class="text-xl font-bold text-[#5ce1e6]">$80K</div><div class="text-xs text-gray-400">REVENUE</div></div>
-                    <div class="text-center"><div class="text-xl font-bold text-[#5ce1e6]">6.2x</div><div class="text-xs text-gray-400">ROAS</div></div>
-                    <div class="text-center"><div class="text-xl font-bold text-[#5ce1e6]">3.1%</div><div class="text-xs text-gray-400">CTR</div></div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center">
-            <a href="https://calendly.com/umairecomdrift/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#5ce1e6] to-purple-600 rounded-lg font-bold text-lg hover:shadow-2xl hover:shadow-[#5ce1e6]/50 transition-all text-black">Let's Talk Strategy →</a>
-        </div>
-    </div>
-</section>
-
-<!-- Client Meetings -->
-<section id="client-meetings" class="py-24 bg-slate-900/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="inline-block px-4 py-1 bg-[#5ce1e6]/20 text-[#5ce1e6] rounded-full text-xs font-bold uppercase tracking-widest mb-4">Real Client Calls</span>
-            <h2 class="text-5xl md:text-6xl font-black heading-font mb-4 gradient-text">Working With Brands</h2>
-            <p class="text-xl text-gray-400">Strategy calls, creative briefs & onboarding sessions with international clients</p>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Meet 1 -->
-            <div class="card-hover glow-border rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="relative overflow-hidden">
-                    <img src="meet1.png" alt="Munawar Abadullah" class="w-full object-cover cursor-zoom-in" style="max-height:220px;object-position:center top;" data-lb-group="meetings">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
-                    <div class="absolute bottom-3 left-3 flex items-center gap-2">
-                        <span class="px-2 py-1 bg-red-500/90 rounded text-xs font-bold text-white flex items-center gap-1"><span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span> LIVE</span>
-                        <span class="px-2 py-1 bg-slate-900/80 rounded text-xs text-white font-mono">Google Meet</span>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h4 class="font-bold heading-font text-white">Munawar Abadullah Sir</h4>
-                    <p class="text-xs text-gray-400 mt-1">For AI UGC Creative Work</p>
-                    <div class="flex items-center gap-2 mt-3">
-                        <span class="px-2 py-1 bg-[#5ce1e6]/10 text-[#5ce1e6] rounded-full text-xs">AI Content</span>
-                        <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">Brand Strategy</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Meet 2 -->
-            <div class="card-hover glow-border rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="relative overflow-hidden">
-                    <img src="meet2.png" alt="Taylor Walker" class="w-full object-cover cursor-zoom-in" style="max-height:220px;object-position:center top;" data-lb-group="meetings">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
-                    <div class="absolute bottom-3 left-3 flex items-center gap-2">
-                        <span class="px-2 py-1 bg-red-500/90 rounded text-xs font-bold text-white flex items-center gap-1"><span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span> LIVE</span>
-                        <span class="px-2 py-1 bg-slate-900/80 rounded text-xs text-white font-mono">Google Meet</span>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h4 class="font-bold heading-font text-white">Taylor Walker</h4>
-                    <p class="text-xs text-gray-400 mt-1">For AI Creative Producer Role</p>
-                    <div class="flex items-center gap-2 mt-3">
-                        <span class="px-2 py-1 bg-[#5ce1e6]/10 text-[#5ce1e6] rounded-full text-xs">UGC Creatives</span>
-                        <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">Media Buying</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Meet 3 -->
-            <div class="card-hover glow-border rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="relative overflow-hidden">
-                    <img src="meet3.png" alt="Hanny and Ronan" class="w-full object-cover cursor-zoom-in" style="max-height:220px;object-position:center top;" data-lb-group="meetings">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
-                    <div class="absolute bottom-3 left-3 flex items-center gap-2">
-                        <span class="px-2 py-1 bg-red-500/90 rounded text-xs font-bold text-white flex items-center gap-1"><span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span> LIVE</span>
-                        <span class="px-2 py-1 bg-slate-900/80 rounded text-xs text-white font-mono">Google Meet</span>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h4 class="font-bold heading-font text-white">Hanny & Ronan</h4>
-                    <p class="text-xs text-gray-400 mt-1">AI Content Delivery & Campaign Review</p>
-                    <div class="flex items-center gap-2 mt-3">
-                        <span class="px-2 py-1 bg-[#5ce1e6]/10 text-[#5ce1e6] rounded-full text-xs">AI Content</span>
-                        <span class="px-2 py-1 bg-green-500/10 text-green-400 rounded-full text-xs">Campaign Review</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Meet 4 -->
-            <div class="card-hover glow-border rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="relative overflow-hidden">
-                    <img src="meet4.png" alt="Eleen Van Hamme" class="w-full object-cover cursor-zoom-in" style="max-height:220px;object-position:center top;" data-lb-group="meetings">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
-                    <div class="absolute bottom-3 left-3 flex items-center gap-2">
-                        <span class="px-2 py-1 bg-blue-500/90 rounded text-xs font-bold text-white">MS Teams</span>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h4 class="font-bold heading-font text-white">Eleen Van Hamme</h4>
-                    <p class="text-xs text-gray-400 mt-1">Media Buyer Role</p>
-                    <div class="flex items-center gap-2 mt-3">
-                        <span class="px-2 py-1 bg-[#5ce1e6]/10 text-[#5ce1e6] rounded-full text-xs">Meta Ads</span>
-                        <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">Onboarding</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Meet 5 — Dua Naqvi -->
-            <div class="card-hover glow-border rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="relative overflow-hidden">
-                    <img src="meet5.png" alt="Dua Naqvi" class="w-full object-cover cursor-zoom-in" style="max-height:220px;object-position:center top;" data-lb-group="meetings">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
-                    <div class="absolute bottom-3 left-3 flex items-center gap-2">
-                        <span class="px-2 py-1 bg-red-500/90 rounded text-xs font-bold text-white flex items-center gap-1"><span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span> LIVE</span>
-                        <span class="px-2 py-1 bg-slate-900/80 rounded text-xs text-white font-mono">Google Meet</span>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h4 class="font-bold heading-font text-white">Dua Naqvi</h4>
-                    <p class="text-xs text-gray-400 mt-1">AI Content & Creative Strategy Session</p>
-                    <div class="flex items-center gap-2 mt-3">
-                        <span class="px-2 py-1 bg-[#5ce1e6]/10 text-[#5ce1e6] rounded-full text-xs">AI UGC</span>
-                        <span class="px-2 py-1 bg-pink-500/10 text-pink-400 rounded-full text-xs">Brand Creative</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Meet 6 -->
-            <div class="card-hover glow-border rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="relative overflow-hidden">
-                    <img src="meet6.png" alt="Vygantas Tugaudis" class="w-full object-cover cursor-zoom-in" style="max-height:220px;object-position:center top;" data-lb-group="meetings">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
-                    <div class="absolute bottom-3 left-3 flex items-center gap-2">
-                        <span class="px-2 py-1 bg-blue-600/90 rounded text-xs font-bold text-white flex items-center gap-1"><span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span> Zoom</span>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h4 class="font-bold heading-font text-white">Vygantas Vagi</h4>
-                    <p class="text-xs text-gray-400 mt-1">Media Buying & Scaling Strategy Role</p>
-                    <div class="flex items-center gap-2 mt-3">
-                        <span class="px-2 py-1 bg-[#5ce1e6]/10 text-[#5ce1e6] rounded-full text-xs">Media Buyer</span>
-                        <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">EU Market</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-12">
-            <a href="https://calendly.com/umairecomdrift/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#5ce1e6] to-purple-600 rounded-lg font-bold text-lg hover:shadow-2xl hover:shadow-[#5ce1e6]/50 transition-all text-black">Book Your Strategy Call →</a>
-        </div>
-    </div>
-</section>
-
-<!-- Testimonials -->
-<section id="testimonials" class="py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="inline-block px-4 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-bold uppercase tracking-widest mb-4">Real Client Feedback</span>
-            <h2 class="text-5xl md:text-6xl font-black heading-font mb-4 gradient-text">What Clients Say</h2>
-            <p class="text-xl text-gray-400">Real WhatsApp messages from real clients. No filters.</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div class="card-hover glow-border rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="px-4 py-3 bg-slate-800 border-b border-slate-700 flex items-center gap-3">
-                    <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    <span class="text-sm font-bold text-white">WhatsApp — Client Reactions</span>
-                    <span class="ml-auto text-xs text-gray-500">Rona • Tanya • Hanny</span>
-                </div>
-                <img src="wa1.png" alt="WhatsApp client reactions" class="w-full cursor-zoom-in" data-lb-group="wa">
-                <div class="px-4 py-3 bg-slate-800/50">
-                    <p class="text-[#5ce1e6] text-xs font-bold">🔥 "Woah Amazing damn" • "Nice I like it" • "We're gonna test the content & run ads"</p>
-                </div>
-            </div>
-            <div class="card-hover glow-border rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800/50 to-slate-900/50">
-                <div class="px-4 py-3 bg-slate-800 border-b border-slate-700 flex items-center gap-3">
-                    <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    <span class="text-sm font-bold text-white">WhatsApp — After AI Creative Delivery</span>
-                    <span class="ml-auto text-xs text-gray-500">Client approved instantly</span>
-                </div>
-                <img src="wa2.png" alt="Client approved AI creative" class="w-full cursor-zoom-in" data-lb-group="wa">
-                <div class="px-4 py-3 bg-slate-800/50">
-                    <p class="text-[#5ce1e6] text-xs font-bold">✅ Client approved AI UGC video immediately after delivery</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Work Samples -->
-<section id="work-samples" class="py-24 bg-slate-900/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="inline-block px-4 py-1 bg-[#5ce1e6]/20 text-[#5ce1e6] rounded-full text-xs font-bold uppercase tracking-widest mb-4">Portfolio</span>
-            <h2 class="text-5xl md:text-6xl font-black heading-font mb-4 gradient-text">Work Samples</h2>
-            <p class="text-xl text-gray-400">AI Creatives • Ad Campaigns • UGC Content • Brand Visuals</p>
-        </div>
-        <div class="grid lg:grid-cols-2 gap-12 mb-16">
-            <!-- IG Grid -->
-            <div>
-                <div class="flex items-center gap-3 mb-6">
-                    <svg class="w-6 h-6 text-[#E1306C]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    <div>
-                        <h3 class="text-xl font-bold heading-font text-white">@umairr.studio</h3>
-                        <p class="text-sm text-gray-400">AI Creative Agency Portfolio</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-3 gap-2 mb-6" id="ig-grid">
-                    <div class="ig-grid-item" data-lb-group="ig" data-src="ig1.png"><img src="ig1.png" alt="AI Product Visual - Pink Bottle" class="w-full h-full object-cover"><div class="ig-overlay"><svg class="w-5 h-5 text-white mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span class="text-white text-xs font-bold">Product Visual</span></div></div>
-                    <div class="ig-grid-item" data-lb-group="ig" data-src="ig2.png"><img src="ig2.png" alt="AI Sunscreen Creative" class="w-full h-full object-cover"><div class="ig-overlay"><svg class="w-5 h-5 text-white mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span class="text-white text-xs font-bold">Product Ad</span></div></div>
-                    <div class="ig-grid-item" data-lb-group="ig" data-src="ig3.png"><img src="ig3.png" alt="Beauty Creative - Lips" class="w-full h-full object-cover"><div class="ig-overlay"><svg class="w-5 h-5 text-white mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span class="text-white text-xs font-bold">Beauty Creative</span></div></div>
-                    <div class="ig-grid-item" data-lb-group="ig" data-src="ig4.png"><img src="ig4.png" alt="Flawless Skin Skincare Ad" class="w-full h-full object-cover"><div class="ig-overlay"><svg class="w-5 h-5 text-white mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span class="text-white text-xs font-bold">Skincare Ad</span></div></div>
-                    <div class="ig-grid-item" data-lb-group="ig" data-src="ig5.png"><img src="ig5.png" alt="AI Avatar UGC Creative" class="w-full h-full object-cover"><div class="ig-overlay"><svg class="w-5 h-5 text-white mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span class="text-white text-xs font-bold">AI Avatar</span></div></div>
-                    <div class="ig-grid-item" data-lb-group="ig" data-src="ig6.png"><img src="ig6.png" alt="Glow Jar Beauty Product Visual" class="w-full h-full object-cover"><div class="ig-overlay"><svg class="w-5 h-5 text-white mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span class="text-white text-xs font-bold">UGC Ad</span></div></div>
-                </div>
-                <a href="https://www.instagram.com/umairr.studio/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-3 border border-[#E1306C]/40 rounded-xl text-sm font-bold text-[#E1306C] hover:bg-[#E1306C]/10 transition-all">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    View Full Portfolio on Instagram
-                </a>
-            </div>
-
-            <!-- AI Creatives -->
-            <div>
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-6 h-6 rounded bg-gradient-to-br from-[#5ce1e6] to-purple-600 flex items-center justify-center"><span class="text-xs font-bold text-black">AI</span></div>
-                    <div>
-                        <h3 class="text-xl font-bold heading-font text-white">Live AI Creatives</h3>
-                        <p class="text-sm text-gray-400">Made with Higgsfield, Seedream & more</p>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <!-- Real fashion UGC video -->
-                    <div class="creative-frame">
-                        <div class="creative-badge">AI UGC</div>
-                        <video class="w-full" autoplay muted loop playsinline style="max-height:280px;object-fit:cover;">
-                            <source src="ugc-fashion.mp4" type="video/mp4">
-                        </video>
-                        <div class="p-4 flex items-center justify-between">
-                            <div>
-                                <p class="text-sm font-bold text-white">Beauty Brand UGC Ad</p>
-                                <p class="text-xs text-gray-400">AI Generated · High Converting Creative</p>
-                            </div>
-                            <span cla                    <!-- Skincare product visual -->
-                    <div class="creative-frame">
-                        <div class="creative-badge">AI Visual</div>
-                        <img src="ig6.png" alt="Glow Jar Beauty - AI Product Visual" class="w-full object-cover cursor-zoom-in" style="max-height:280px;" data-lb-group="ig">
-                        <div class="p-4 flex items-center justify-between">
-                            <div>
-                                <p class="text-sm font-bold text-white">Skincare Product Visual</p>
-                                <p class="text-xs text-gray-400">Glow Jar Beauty · Vitamin C Serum Ad</p>
-                            </div>
-                            <span class="text-xs px-2 py-1 bg-purple-500/10 text-purple-400 rounded-full">Client Work</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center">
-            <a href="https://www.instagram.com/umairr.studio/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#E1306C] to-purple-600 rounded-lg font-bold text-lg hover:shadow-2xl hover:shadow-[#E1306C]/30 transition-all">See All Work on @umairr.studio →</a>
-        </div>
-    </div>
-</section>
-
-<!-- How I Work -->
-<section class="py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="inline-block px-4 py-1 bg-[#5ce1e6]/20 text-[#5ce1e6] rounded-full text-xs font-bold uppercase tracking-widest mb-4">Simple Process</span>
-            <h2 class="text-5xl md:text-6xl font-black heading-font mb-4 gradient-text">How I Work</h2>
-            <p class="text-xl text-gray-400">From first call to scaling — here's the process</p>
-        </div>
-        <div class="grid md:grid-cols-4 gap-8">
-            <div class="process-step text-center">
-                <div class="process-connector"></div>
-                <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 border border-[#5ce1e6]/40 flex items-center justify-center text-[#5ce1e6] font-black text-lg heading-font">1</div>
-                <h3 class="font-bold heading-font text-white mb-2">Free Strategy Call</h3>
-                <p class="text-sm text-gray-400">We audit your brand, identify gaps, and map a growth plan — 30 mins, zero fluff.</p>
-            </div>
-            <div class="process-step text-center">
-                <div class="process-connector"></div>
-                <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 border border-[#5ce1e6]/40 flex items-center justify-center text-[#5ce1e6] font-black text-lg heading-font">2</div>
-                <h3 class="font-bold heading-font text-white mb-2">Creative & Funnel Build</h3>
-                <p class="text-sm text-gray-400">AI-powered UGC creatives, ad copy, and funnel setup optimized for your audience.</p>
-            </div>
-            <div class="process-step text-center">
-                <div class="process-connector"></div>
-                <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 border border-[#5ce1e6]/40 flex items-center justify-center text-[#5ce1e6] font-black text-lg heading-font">3</div>
-                <h3 class="font-bold heading-font text-white mb-2">Launch & Test</h3>
-                <p class="text-sm text-gray-400">Campaigns go live. We test creatives fast, cut losers, double down on winners.</p>
-            </div>
-            <div class="process-step text-center">
-                <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 border border-[#5ce1e6]/40 flex items-center justify-center text-[#5ce1e6] font-black text-lg heading-font">4</div>
-                <h3 class="font-bold heading-font text-white mb-2">Scale & Report</h3>
-                <p class="text-sm text-gray-400">Weekly reports, continuous optimization, and aggressive scaling of proven campaigns.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="py-24 bg-gradient-to-br from-[#5ce1e6]/10 to-purple-900/10 relative overflow-hidden">
-    <div class="absolute inset-0 noise"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center mb-16">
-            <h2 class="text-5xl md:text-6xl font-black heading-font mb-4 gradient-text">Let's Scale Your Brand</h2>
-            <p class="text-xl text-gray-400">Multiple ways to connect. Pick what works for you.</p>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <a href="https://calendly.com/umairecomdrift/30min" target="_blank" rel="noopener noreferrer" class="card-hover glow-border rounded-2xl p-6 bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex flex-col items-center text-center group">
-                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 flex items-center justify-center mb-4">
-                    <svg class="w-7 h-7 text-[#5ce1e6] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                </div>
-                <h3 class="text-xl font-bold heading-font mb-2">Book a Call</h3>
-                <p class="text-gray-400 text-sm mb-4">Free 30-min strategy session</p>
-                <div class="flex items-center gap-2 text-[#5ce1e6] font-semibold mt-auto">View Calendar <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></div>
-            </a>
-            <a href="https://www.linkedin.com/in/umairsaleemofficial/" target="_blank" rel="noopener noreferrer" class="card-hover glow-border rounded-2xl p-6 bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex flex-col items-center text-center group">
-                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 flex items-center justify-center mb-4">
-                    <svg class="w-7 h-7 text-[#5ce1e6] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </div>
-                <h3 class="text-xl font-bold heading-font mb-2">LinkedIn</h3>
-                <p class="text-gray-400 text-sm mb-4">Connect professionally</p>
-                <div class="flex items-center gap-2 text-[#5ce1e6] font-semibold mt-auto">Connect <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></div>
-            </a>
-            <a href="mailto:umairecomdrift@gmail.com" class="card-hover glow-border rounded-2xl p-6 bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex flex-col items-center text-center group">
-                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 flex items-center justify-center mb-4">
-                    <svg class="w-7 h-7 text-[#5ce1e6] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                </div>
-                <h3 class="text-xl font-bold heading-font mb-2">Email</h3>
-                <p class="text-gray-400 text-sm mb-4">umairecomdrift@gmail.com</p>
-                <div class="flex items-center gap-2 text-[#5ce1e6] font-semibold mt-auto">Send Email <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></div>
-            </a>
-            <a href="https://www.instagram.com/umair.ecomdrift/" target="_blank" rel="noopener noreferrer" class="card-hover glow-border rounded-2xl p-6 bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex flex-col items-center text-center group">
-                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#5ce1e6]/20 to-purple-600/20 flex items-center justify-center mb-4">
-                    <svg class="w-7 h-7 text-[#5ce1e6] group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </div>
-                <h3 class="text-xl font-bold heading-font mb-2">Instagram</h3>
-                <p class="text-gray-400 text-sm mb-4">DM "SCALE" to start</p>
-                <div class="flex items-center gap-2 text-[#5ce1e6] font-semibold mt-auto">Send DM <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></div>
-            </a>
-        </div>
-
-        <!-- CTA Box -->
-        <div class="text-center p-12 glow-border rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 max-w-4xl mx-auto">
-            <h3 class="text-3xl font-bold heading-font mb-4">Ready to 10x Your Revenue?</h3>
-            <p class="text-gray-400 text-lg mb-8">Join 15+ brands that trusted me to scale their business to 6-7 figures. Book a free strategy call and let's map out your growth plan.</p>
-            <a href="https://calendly.com/umairecomdrift/30min" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-[#5ce1e6] to-purple-600 rounded-lg font-bold text-xl hover:shadow-2xl hover:shadow-[#5ce1e6]/50 transition-all text-black">
-                Book Your Free Strategy Session →
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- ===================== FOOTER ===================== -->
-<footer class="bg-slate-950 border-t border-[#5ce1e6]/20 pt-16 pb-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- Top row -->
-        <div class="grid md:grid-cols-3 gap-12 mb-12">
-
-            <!-- Brand column -->
-            <div>
-                <h3 class="text-3xl font-black heading-font gradient-text mb-3">UMAIR</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                    Performance marketer helping D2C brands scale to 6-7 figures through Meta Ads, TikTok Ads, AI-powered UGC creatives, and high-converting sales funnels. Based in Pakistan, working with brands worldwide.
-                </p>
-                <a href="https://calendly.com/umairecomdrift/30min" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#5ce1e6] to-purple-600 rounded-lg font-bold text-sm hover:shadow-lg hover:shadow-[#5ce1e6]/30 transition-all text-black">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    Book a Free Call
-                </a>
-            </div>
-
-            <!-- Quick Links -->
-            <div>
-                <h4 class="text-sm font-bold uppercase tracking-widest text-[#5ce1e6] mb-5">Quick Links</h4>
-                <ul class="space-y-3 text-sm">
-                    <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Me</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
-                    <li><a href="#shopify-results" class="text-gray-400 hover:text-white transition-colors">Shopify Results</a></li>
-                    <li><a href="#client-meetings" class="text-gray-400 hover:text-white transition-colors">Client Meetings</a></li>
-                    <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Client Reviews</a></li>
-                    <li><a href="#work-samples" class="text-gray-400 hover:text-white transition-colors">Work Samples</a></li>
-                    <li><a href="https://calendly.com/umairecomdrift/30min" target="_blank" rel="noopener noreferrer" class="text-[#5ce1e6] hover:text-white transition-colors font-semibold">→ Book a Strategy Call</a></li>
-                </ul>
-            </div>
-
-            <!-- Connect -->
-            <div>
-                <h4 class="text-sm font-bold uppercase tracking-widest text-[#5ce1e6] mb-5">Connect With Me</h4>
-                <div class="space-y-4">
-                    <a href="https://www.instagram.com/umair.ecomdrift/" target="_blank" rel="noopener noreferrer"
-                       class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
-                        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-[#E1306C]/20 to-purple-600/20 flex items-center justify-center group-hover:from-[#E1306C]/40 transition-all">
-                            <svg class="w-4 h-4 text-[#E1306C]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        </div>
-                        <div>
-                            <div class="text-sm font-semibold text-white">@umair.ecomdrift</div>
-                            <div class="text-xs text-gray-500">Personal Brand · 7.4K+ Community</div>
-                        </div>
-                    </a>
-                    <a href="https://www.instagram.com/umairr.studio/" target="_blank" rel="noopener noreferrer"
-                       class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
-                        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-[#E1306C]/20 to-purple-600/20 flex items-center justify-center group-hover:from-[#E1306C]/40 transition-all">
-                            <svg class="w-4 h-4 text-[#E1306C]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        </div>
-                        <div>
-                            <div class="text-sm font-semibold text-white">@umairr.studio</div>
-                            <div class="text-xs text-gray-500">AI Creative Agency Portfolio</div>
-                        </div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/umairsaleemofficial/" target="_blank" rel="noopener noreferrer"
-                       class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
-                        <div class="w-9 h-9 rounded-lg bg-blue-600/20 flex items-center justify-center group-hover:bg-blue-600/40 transition-all">
-                            <svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        </div>
-                        <div>
-                            <div class="text-sm font-semibold text-white">LinkedIn</div>
-                            <div class="text-xs text-gray-500">umairsaleemofficial</div>
-                        </div>
-                    </a>
-                    <a href="mailto:umairecomdrift@gmail.com"
-                       class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
-                        <div class="w-9 h-9 rounded-lg bg-[#5ce1e6]/10 flex items-center justify-center group-hover:bg-[#5ce1e6]/25 transition-all">
-                            <svg class="w-4 h-4 text-[#5ce1e6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <div>
-                            <div class="text-sm font-semibold text-white">Email</div>
-                            <div class="text-xs text-gray-500">umairecomdrift@gmail.com</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Divider -->
-        <div class="border-t border-[#5ce1e6]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-            <p>© 2026 Umair Saleem. All rights reserved.</p>
-            <p class="text-center">Built for growth · Pakistan 🇵🇰 → Worldwide 🌍</p>
-            <a href="https://calendly.com/umairecomdrift/30min" target="_blank" rel="noopener noreferrer" class="text-[#5ce1e6] hover:text-white font-semibold transition-colors">Book a Free Strategy Call →</a>
-        </div>
-    </div>
-</footer>
-
-<!-- Sticky CTA -->
-<div class="sticky-cta">
-    <a href="https://calendly.com/umairecomdrift/30min" target="_blank" rel="noopener noreferrer"
-       class="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-[#5ce1e6] to-purple-600 rounded-full font-bold text-sm shadow-2xl shadow-[#5ce1e6]/40 hover:scale-105 transition-all text-black">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-        Book a Call
-    </a>
+  </div>
 </div>
 
+<!-- ── BRANDS SCALED ── -->
+<section style="padding:80px 0;border-bottom:1px solid var(--card-border)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="label-line" style="justify-content:center">Brands I've Scaled</div>
+      <h2 class="display" style="font-size:clamp(36px,4.5vw,60px)">
+        SCALE YOUR<br>
+        <span style="color:var(--accent)">ECOMMERCE BRAND.</span>
+      </h2>
+      <p style="color:var(--text-muted);font-size:15px;margin-top:16px;max-width:520px;margin-left:auto;margin-right:auto">Real brands, real revenue growth. Here's what's possible when strategy meets AI-powered execution.</p>
+    </div>
+
+    <!-- Brand cards grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px">
+
+      <!-- Brand 1 -->
+      <div style="background:var(--card-bg);padding:36px;border-top:2px solid var(--accent);transition:.2s" onmouseover="this.style.background='var(--bg3)'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:44px;height:44px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:14px;color:#000;text-align:center;line-height:1.1">FAB</div>
+            <div>
+              <div style="font-weight:700;font-size:14px;color:#fff">Fashion Brand PK</div>
+              <div style="font-size:11px;color:var(--text-muted)">Clothing & Apparel</div>
+            </div>
+          </div>
+          <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;background:rgba(92,225,230,.1);color:var(--accent);border-radius:3px">Active</span>
+        </div>
+        <div style="margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-size:12px;color:var(--text-muted)">Revenue Growth</span>
+            <span style="font-size:12px;font-weight:700;color:var(--accent)">$800 → $18K in 60 days</span>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border-radius:3px;height:4px;overflow:hidden">
+            <div style="width:92%;height:100%;background:var(--accent);border-radius:3px"></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:var(--accent)">$18K</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">60 Days</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:var(--accent)">22x</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">Growth</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:var(--accent)">5.4x</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">ROAS</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--card-border);font-size:12px;color:var(--text-muted)">Meta Ads + TikTok · $800 to $18K in just 60 days</div>
+      </div>
+
+      <!-- Brand 2 -->
+      <div style="background:var(--card-bg);padding:36px;border-top:2px solid #c084fc;transition:.2s" onmouseover="this.style.background='var(--bg3)'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:44px;height:44px;background:linear-gradient(135deg,#ec4899,#8b5cf6);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;color:#fff">GJ</div>
+            <div>
+              <div style="font-weight:700;font-size:14px;color:#fff">Glow Jar Beauty</div>
+              <div style="font-size:11px;color:var(--text-muted)">Organic Skincare Brand</div>
+            </div>
+          </div>
+          <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;background:rgba(168,85,247,.12);color:#c084fc;border-radius:3px">Active</span>
+        </div>
+        <div style="margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-size:12px;color:var(--text-muted)">Revenue Growth</span>
+            <span style="font-size:12px;font-weight:700;color:#c084fc">$500 → $10,000/mo</span>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border-radius:3px;height:4px;overflow:hidden">
+            <div style="width:94%;height:100%;background:#c084fc;border-radius:3px"></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#c084fc">$10K</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">Monthly</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#c084fc">20x</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">Growth</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#c084fc">6.2x</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">ROAS</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--card-border);font-size:12px;color:var(--text-muted)">AI UGC + Meta Ads · $500 to $10K/month recurring</div>
+      </div>
+
+      <!-- Brand 3 -->
+      <div style="background:var(--card-bg);padding:36px;border-top:2px solid #22c55e;transition:.2s" onmouseover="this.style.background='var(--bg3)'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:44px;height:44px;background:linear-gradient(135deg,#059669,#10b981);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;color:#fff">TB</div>
+            <div>
+              <div style="font-weight:700;font-size:14px;color:#fff">Trailer Brand USA</div>
+              <div style="font-size:11px;color:var(--text-muted)">Automotive · US Market</div>
+            </div>
+          </div>
+          <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;background:rgba(34,197,94,.1);color:#4ade80;border-radius:3px">Scaled</span>
+        </div>
+        <div style="margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-size:12px;color:var(--text-muted)">Revenue Growth</span>
+            <span style="font-size:12px;font-weight:700;color:#4ade80">$120K/mo peak</span>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border-radius:3px;height:4px;overflow:hidden">
+            <div style="width:82%;height:100%;background:#22c55e;border-radius:3px"></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#4ade80">$120K</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">Monthly</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#4ade80">5.4x</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">ROAS</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#4ade80">-52%</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">CAC Drop</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--card-border);font-size:12px;color:var(--text-muted)">Meta Ads · Q4 Scale · US Market</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px">
+
+      <!-- Brand 4 -->
+      <div style="background:var(--card-bg);padding:36px;border-top:2px solid #f59e0b;transition:.2s" onmouseover="this.style.background='var(--bg3)'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:44px;height:44px;background:linear-gradient(135deg,#f59e0b,#ef4444);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;color:#fff">LP</div>
+            <div>
+              <div style="font-weight:700;font-size:14px;color:#fff">LePur Organics</div>
+              <div style="font-size:11px;color:var(--text-muted)">Organic Skincare</div>
+            </div>
+          </div>
+          <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;background:rgba(245,158,11,.1);color:#fbbf24;border-radius:3px">Active</span>
+        </div>
+        <div style="margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-size:12px;color:var(--text-muted)">Ad Performance</span>
+            <span style="font-size:12px;font-weight:700;color:#fbbf24">4.67% CVR · 321 sessions/day</span>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border-radius:3px;height:4px;overflow:hidden">
+            <div style="width:75%;height:100%;background:#f59e0b;border-radius:3px"></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#fbbf24">$689</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">Daily</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#fbbf24">+108%</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">Sessions</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#fbbf24">4.67%</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">CVR</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--card-border);font-size:12px;color:var(--text-muted)">AI UGC + Shopify CRO · Organic beauty niche</div>
+      </div>
+
+      <!-- Brand 5 -->
+      <div style="background:var(--card-bg);padding:36px;border-top:2px solid #06b6d4;transition:.2s" onmouseover="this.style.background='var(--bg3)'" onmouseout="this.style.background='var(--card-bg)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:44px;height:44px;background:linear-gradient(135deg,#0891b2,#7c3aed);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;color:#fff">TG</div>
+            <div>
+              <div style="font-weight:700;font-size:14px;color:#fff">Tugonn Brand</div>
+              <div style="font-size:11px;color:var(--text-muted)">EU Market · Media Buying</div>
+            </div>
+          </div>
+          <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;background:rgba(6,182,212,.1);color:#22d3ee;border-radius:3px">EU Market</span>
+        </div>
+        <div style="margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-size:12px;color:var(--text-muted)">Ad Performance</span>
+            <span style="font-size:12px;font-weight:700;color:#22d3ee">6.48x ROAS · EU Scaling</span>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border-radius:3px;height:4px;overflow:hidden">
+            <div style="width:85%;height:100%;background:#06b6d4;border-radius:3px"></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#22d3ee">6.48x</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">ROAS</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#22d3ee">287</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">Purchases</div>
+          </div>
+          <div style="text-align:center;background:rgba(255,255,255,.04);border-radius:4px;padding:10px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#22d3ee">928</div>
+            <div style="font-size:9px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px">Add to Cart</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--card-border);font-size:12px;color:var(--text-muted)">Meta Ads · EU Market Expansion</div>
+      </div>
+
+      <!-- Brand 6 — CTA -->
+      <div style="background:var(--accent);padding:36px;display:flex;flex-direction:column;justify-content:space-between;min-height:300px">
+        <div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.5);margin-bottom:16px">Your Brand</div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:40px;text-transform:uppercase;line-height:.92;color:#000;margin-bottom:16px">NEXT<br>SUCCESS<br>STORY.</h3>
+          <p style="font-size:14px;color:rgba(0,0,0,.65);line-height:1.6">Ready to join the brands scaling their ecommerce brand? Let's build your growth system.</p>
+        </div>
+        <a href="https://calendly.com/umairecomdrift/30min" target="_blank"
+           style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:#000;color:#fff;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:4px;margin-top:24px;transition:.2s"
+           onmouseover="this.style.background='#111'" onmouseout="this.style.background='#000'">
+          Book Free Call →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY ME ── -->
+<section id="about">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="label-line">Why Choose Me</div>
+        <h2 class="display" style="font-size:clamp(48px,6vw,80px);line-height:.92;margin-bottom:24px">
+          SCALE YOUR<br>
+          <span style="color:var(--accent)">ECOMMERCE BRAND</span>
+        </h2>
+        <p style="font-size:15px;color:var(--text-muted);line-height:1.75;margin-bottom:32px;max-width:380px">
+          Most ecommerce brands burn ad budget without a real system. I build Meta & TikTok ad funnels powered by AI creatives that turn your spend into consistent, scalable revenue.
+        </p>
+        <a href="https://calendly.com/umairecomdrift/30min" target="_blank" class="btn-primary" style="display:inline-flex">
+          Start Today →
+        </a>
+      </div>
+      <div class="why-cards">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h4>Meta Ads Mastery</h4>
+          <p>Tested across 51 campaigns with 6.94x average ROAS. I know what makes ads convert.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.36a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </div>
+          <h4>AI-Powered UGC</h4>
+          <p>Studio-quality AI creatives using Higgsfield, Seedream & more — at a fraction of shoot costs.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <h4>Shopify Growth</h4>
+          <p>$3,060 single-day revenue, 8.68% CVR, 50+ daily orders — real dashboards, real numbers.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+          </div>
+          <h4>International Clients</h4>
+          <p>Working with brands across Pakistan, EU, USA — strategy calls, creative briefs, real results.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h4>Full-Funnel Strategy</h4>
+          <p>TOFU → MOFU → BOFU. Every stage covered — from thumb-stop creatives to checkout optimization.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h4>Weekly Reports</h4>
+          <p>Full transparency. MER, nCAC, LTV:CAC, thumb-stop rate — you know exactly where every rupee goes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services" style="background:var(--bg2);padding:100px 0">
+  <div class="container">
+    <div class="label-line">What We Build</div>
+    <div class="services-intro">
+      <h2>EVERYTHING YOU NEED TO<br><span class="accent">SCALE YOUR ECOMMERCE BRAND</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-icon"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+        <h3>Meta Ads Strategy</h3>
+        <p>Data-driven campaigns built for ROAS. Creative testing, audience research, scaling systems — full funnel management.</p>
+        <div class="service-tags">
+          <span class="tag">TOFU</span><span class="tag">MOFU</span><span class="tag">BOFU</span><span class="tag">A/B Testing</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.36a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></div>
+        <h3>AI-Powered UGC</h3>
+        <p>Higgsfield, Seedream & more. Studio-quality AI creatives that stop thumbs and drive clicks — at fraction of real shoot cost.</p>
+        <div class="service-tags">
+          <span class="tag">Higgsfield</span><span class="tag">Seedream</span><span class="tag">Avatars</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div>
+        <h3>Shopify Development</h3>
+        <p>High-converting Shopify stores built for performance. 4.89% CVR stores — design meets conversion optimization.</p>
+        <div class="service-tags">
+          <span class="tag">CRO</span><span class="tag">Speed</span><span class="tag">Design</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-icon"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+        <h3>E-commerce Scaling</h3>
+        <p>End-to-end growth systems for D2C brands. Proven 3-layer funnel frameworks that consistently hit their revenue goals.</p>
+        <div class="service-tags">
+          <span class="tag">D2C</span><span class="tag">MER</span><span class="tag">LTV:CAC</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-icon"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/></svg></div>
+        <h3>TikTok Ads</h3>
+        <p>Short-form content strategy that converts. Hook frameworks, trending creative formats, and rapid testing cycles.</p>
+        <div class="service-tags">
+          <span class="tag">Hook Rate</span><span class="tag">Thumb-Stop</span><span class="tag">Viral</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-icon"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+        <h3>Analytics & Reporting</h3>
+        <p>Weekly performance reports with MER, nCAC, LTV:CAC ratios. Full data transparency so you know what's working.</p>
+        <div class="service-tags">
+          <span class="tag">Weekly Reports</span><span class="tag">MER</span><span class="tag">nCAC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REAL RESULTS ── -->
+<section id="results">
+  <div class="container">
+    <div class="label-line">Real Results</div>
+    <h2 class="display" style="font-size:clamp(48px,6vw,80px)">
+      TRANSFORM<br>
+      <span style="color:var(--accent)">YOUR BUSINESS.</span>
+    </h2>
+    <div class="results-cards">
+      <div class="result-card" data-lb-group="results">
+        <img src="shopify3.jpeg" alt="$3,060 Peak Revenue Day">
+        <div class="result-overlay"></div>
+        <div class="result-label-wrap">
+          <span class="result-badge">Shopify Proof</span>
+          <h3>PEAK REVENUE<span>DAY.</span></h3>
+          <p>$3,060 in one day · 50+ orders · 8.68% CVR</p>
+        </div>
+      </div>
+      <div class="result-card" data-lb-group="results">
+        <img src="meta1.jpg" alt="Meta Ads 51 Campaigns">
+        <div class="result-overlay"></div>
+        <div class="result-label-wrap">
+          <span class="result-badge">Meta Ads Manager</span>
+          <h3>LEADS ON<span>AUTOPILOT.</span></h3>
+          <p>6.94x avg ROAS · 5,769 purchases · 51 campaigns</p>
+        </div>
+      </div>
+      <div class="result-card" data-lb-group="results">
+        <img src="shopify2.jpeg" alt="Sessions +108%">
+        <div class="result-overlay"></div>
+        <div class="result-label-wrap">
+          <span class="result-badge">Scale Up</span>
+          <h3>SESSIONS<span>+108%.</span></h3>
+          <p>$689 sales · 321 sessions · 4.67% conversion</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DASHBOARD PROOF ── -->
+<section id="dashboards" class="dash-section">
+  <div class="container">
+    <div class="label-line">Live Dashboard Proof</div>
+    <h2 class="display" style="font-size:clamp(40px,5vw,68px)">
+      REAL STORE<br>
+      <span style="color:var(--accent)">REAL NUMBERS.</span>
+    </h2>
+    <p style="color:var(--text-muted);font-size:15px;margin-top:16px">Straight from Shopify & Meta Ads Manager. Click any screenshot to zoom.</p>
+
+    <!-- Shopify -->
+    <div style="display:flex;align-items:center;gap:12px;margin:48px 0 16px">
+      <div style="width:28px;height:28px;background:linear-gradient(135deg,#5e8e3e,#96bf48);border-radius:4px;display:flex;align-items:center;justify-content:center">
+        <svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+      </div>
+      <span style="font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase">Shopify Live Dashboards</span>
+    </div>
+    <div class="dash-grid">
+      <div class="dash-card">
+        <div class="dash-header shopify">
+          <span class="dash-dot" style="background:#ff5f57"></span>
+          <span class="dash-dot" style="background:#ffbd2e"></span>
+          <span class="dash-dot" style="background:#28c840"></span>
+          <span class="dash-mono">Shopify Mobile App</span>
+        </div>
+        <img src="shopify1.jpeg" class="dash-img" alt="$735 daily sales" data-lb-group="shopify">
+        <div class="dash-body">
+          <h4>Daily Sales Dashboard</h4>
+          <div class="dash-metrics">
+            <div class="dash-metric"><div class="dash-metric-val">$735</div><div class="dash-metric-label">Sales</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">+14%</div><div class="dash-metric-label">Growth</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">4.89%</div><div class="dash-metric-label">CVR</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-header shopify">
+          <span class="dash-dot" style="background:#ff5f57"></span>
+          <span class="dash-dot" style="background:#ffbd2e"></span>
+          <span class="dash-dot" style="background:#28c840"></span>
+          <span class="dash-mono">Shopify Admin — Nov 9, 2025</span>
+        </div>
+        <img src="shopify2.jpeg" class="dash-img" alt="Sessions +108%" data-lb-group="shopify">
+        <div class="dash-body">
+          <h4>Sessions & Revenue Spike</h4>
+          <div class="dash-metrics">
+            <div class="dash-metric"><div class="dash-metric-val">$689</div><div class="dash-metric-label">Sales</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">+108%</div><div class="dash-metric-label">Sessions</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">4.67%</div><div class="dash-metric-label">CVR</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-header shopify">
+          <span class="dash-dot" style="background:#ff5f57"></span>
+          <span class="dash-dot" style="background:#ffbd2e"></span>
+          <span class="dash-dot" style="background:#28c840"></span>
+          <span class="dash-mono">Shopify Mobile — Yesterday</span>
+        </div>
+        <img src="shopify3.jpeg" class="dash-img" alt="$3060 peak day" data-lb-group="shopify">
+        <div class="dash-body">
+          <h4>Peak Revenue Day</h4>
+          <div class="dash-metrics">
+            <div class="dash-metric"><div class="dash-metric-val">$3,060</div><div class="dash-metric-label">Sales</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">50+</div><div class="dash-metric-label">Orders</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">8.68%</div><div class="dash-metric-label">CVR</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meta -->
+    <div style="display:flex;align-items:center;gap:12px;margin:48px 0 16px">
+      <div style="width:28px;height:28px;background:#1877f2;border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#fff">f</div>
+      <span style="font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase">Meta Ads Manager — Campaign Data</span>
+    </div>
+    <div class="dash-grid" style="grid-template-columns:1fr 1fr">
+      <div class="dash-card">
+        <div class="dash-header meta">
+          <span class="dash-dot" style="background:#ff5f57"></span>
+          <span class="dash-dot" style="background:#ffbd2e"></span>
+          <span class="dash-dot" style="background:#28c840"></span>
+          <span class="dash-mono">51 Campaigns · Jun 2024–Jul 2025</span>
+        </div>
+        <img src="meta1.jpg" class="dash-img" alt="Meta 51 campaigns" data-lb-group="meta">
+        <div class="dash-body">
+          <h4>51 Active Campaigns — Full Overview</h4>
+          <div class="dash-meta-grid">
+            <div class="dash-metric"><div class="dash-metric-val">5,769</div><div class="dash-metric-label">Purchases</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">6.94x</div><div class="dash-metric-label">Avg ROAS</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">15,054</div><div class="dash-metric-label">Add to Cart</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">Rs567</div><div class="dash-metric-label">CPA</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-header meta">
+          <span class="dash-dot" style="background:#ff5f57"></span>
+          <span class="dash-dot" style="background:#ffbd2e"></span>
+          <span class="dash-dot" style="background:#28c840"></span>
+          <span class="dash-mono">Ad Set Detail · Max Date Range</span>
+        </div>
+        <img src="meta2.jpeg" class="dash-img" alt="Meta ad set breakdown" data-lb-group="meta">
+        <div class="dash-body">
+          <h4>Ad Set Breakdown — All-Time Data</h4>
+          <div class="dash-meta-grid">
+            <div class="dash-metric"><div class="dash-metric-val">2,954</div><div class="dash-metric-label">Purchases</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">5.20x</div><div class="dash-metric-label">Avg ROAS</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">12,172</div><div class="dash-metric-label">Add to Cart</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">10.99x</div><div class="dash-metric-label">Top ROAS</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CASE STUDIES ── -->
+<section id="portfolio">
+  <div class="container">
+    <div class="label-line">Case Studies</div>
+    <h2 class="display" style="font-size:clamp(40px,5vw,68px);margin-bottom:48px">
+      BRANDS I'VE<br>
+      <span style="color:var(--accent)">SCALED.</span>
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px">
+      <div style="background:var(--card-bg);padding:40px;border-top:2px solid var(--accent)">
+        <span style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)">E-Commerce</span>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;text-transform:uppercase;margin:16px 0 12px;line-height:.95">PREMIUM FASHION BRAND</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:32px">From $15K to $120K monthly revenue in 4 months using Meta Ads + TikTok strategy. Complete brand funnel rebuild.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding-top:24px;border-top:1px solid var(--card-border)">
+          <div style="text-align:center;padding:16px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:var(--accent)">+700%</div>
+            <div style="font-size:10px;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px">Revenue</div>
+          </div>
+          <div style="text-align:center;padding:16px;border-left:1px solid var(--card-border);border-right:1px solid var(--card-border)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:var(--accent)">5.4x</div>
+            <div style="font-size:10px;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px">ROAS</div>
+          </div>
+          <div style="text-align:center;padding:16px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:var(--accent)">-52%</div>
+            <div style="font-size:10px;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px">CAC</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--card-bg);padding:40px;border-top:2px solid rgba(168,85,247,.6)">
+        <span style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#c084fc">Beauty & Skincare</span>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;text-transform:uppercase;margin:16px 0 12px;line-height:.95">ORGANIC SKINCARE LAUNCH</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:32px">Zero to $80K in first 60 days. Built complete sales funnel, AI UGC strategy, and scaling system from scratch.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding-top:24px;border-top:1px solid var(--card-border)">
+          <div style="text-align:center;padding:16px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:#c084fc">$80K</div>
+            <div style="font-size:10px;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px">Revenue</div>
+          </div>
+          <div style="text-align:center;padding:16px;border-left:1px solid var(--card-border);border-right:1px solid var(--card-border)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:#c084fc">6.2x</div>
+            <div style="font-size:10px;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px">ROAS</div>
+          </div>
+          <div style="text-align:center;padding:16px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:#c084fc">3.1%</div>
+            <div style="font-size:10px;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px">CTR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLIENT MEETINGS ── -->
+<section id="client-meetings" style="background:var(--bg2)">
+  <div class="container">
+    <div class="label-line">Real Client Calls</div>
+    <h2 class="display" style="font-size:clamp(40px,5vw,68px)">
+      WORKING WITH<br>
+      <span style="color:var(--accent)">BRANDS.</span>
+    </h2>
+    <p style="color:var(--text-muted);font-size:15px;margin-top:16px">Strategy calls, creative briefs & onboarding sessions with international clients. Click to zoom.</p>
+    <div class="meetings-grid">
+      <div class="meeting-card">
+        <img src="meet1.png" alt="Munawar Abadullah" class="meeting-img" data-lb-group="meetings">
+        <div class="meeting-overlay"></div>
+        <div class="meeting-badges">
+          <span class="badge-live">Live</span>
+          <span class="badge-platform">Google Meet</span>
+        </div>
+        <div class="meeting-info">
+          <h4>Munawar Abadullah Sir</h4>
+          <p>AI UGC Creative Work</p>
+          <div class="meeting-tags"><span class="mtag">AI Content</span><span class="mtag purple">Brand Strategy</span></div>
+        </div>
+      </div>
+      <div class="meeting-card">
+        <img src="meet2.png" alt="Taylor Walker" class="meeting-img" data-lb-group="meetings">
+        <div class="meeting-overlay"></div>
+        <div class="meeting-badges">
+          <span class="badge-live">Live</span>
+          <span class="badge-platform">Google Meet</span>
+        </div>
+        <div class="meeting-info">
+          <h4>Taylor Walker</h4>
+          <p>AI Creative Producer Role</p>
+          <div class="meeting-tags"><span class="mtag">UGC Creatives</span><span class="mtag purple">Media Buying</span></div>
+        </div>
+      </div>
+      <div class="meeting-card">
+        <img src="meet3.png" alt="Hanny and Ronan" class="meeting-img" data-lb-group="meetings">
+        <div class="meeting-overlay"></div>
+        <div class="meeting-badges">
+          <span class="badge-live">Live</span>
+          <span class="badge-platform">Google Meet</span>
+        </div>
+        <div class="meeting-info">
+          <h4>Hanny & Ronan</h4>
+          <p>AI Content Delivery & Campaign Review</p>
+          <div class="meeting-tags"><span class="mtag">AI Content</span><span class="mtag green">Campaign Review</span></div>
+        </div>
+      </div>
+      <div class="meeting-card">
+        <img src="meet4.png" alt="Eleen Van Hamme" class="meeting-img" data-lb-group="meetings">
+        <div class="meeting-overlay"></div>
+        <div class="meeting-badges">
+          <span style="padding:4px 9px;background:rgba(59,130,246,.8);border-radius:3px;font-size:10px;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase">MS Teams</span>
+        </div>
+        <div class="meeting-info">
+          <h4>Eleen Van Hamme</h4>
+          <p>Media Buyer Role</p>
+          <div class="meeting-tags"><span class="mtag">Meta Ads</span><span class="mtag purple">Onboarding</span></div>
+        </div>
+      </div>
+      <div class="meeting-card">
+        <img src="meet5.png" alt="Dua Naqvi" class="meeting-img" data-lb-group="meetings">
+        <div class="meeting-overlay"></div>
+        <div class="meeting-badges">
+          <span class="badge-live">Live</span>
+          <span class="badge-platform">Google Meet</span>
+        </div>
+        <div class="meeting-info">
+          <h4>Dua Naqvi</h4>
+          <p>AI Content & Creative Strategy</p>
+          <div class="meeting-tags"><span class="mtag">AI UGC</span><span class="mtag pink">Brand Creative</span></div>
+        </div>
+      </div>
+      <div class="meeting-card">
+        <img src="meet6.png" alt="Vygantas" class="meeting-img" data-lb-group="meetings">
+        <div class="meeting-overlay"></div>
+        <div class="meeting-badges">
+          <span style="padding:4px 9px;background:rgba(37,99,235,.8);border-radius:3px;font-size:10px;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase">Zoom</span>
+        </div>
+        <div class="meeting-info">
+          <h4>Vygantas Vagi</h4>
+          <p>Media Buying & Scaling Strategy · EU Market</p>
+          <div class="meeting-tags"><span class="mtag">Media Buyer</span><span class="mtag purple">EU Market</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="https://calendly.com/umairecomdrift/30min" target="_blank" class="btn-primary">Book Your Strategy Call →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="label-line">Real Client Feedback</div>
+    <h2 class="display" style="font-size:clamp(40px,5vw,68px)">
+      WHAT CLIENTS<br>
+      <span style="color:var(--accent)">SAY.</span>
+    </h2>
+    <p style="color:var(--text-muted);font-size:15px;margin-top:16px">Real WhatsApp messages. No filters. Click to zoom.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-header">
+          <svg width="18" height="18" fill="#25D366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div>
+            <div class="testi-header-text">WhatsApp — Client Reactions</div>
+            <div class="testi-header-sub">Rona • Tanya • Hanny</div>
+          </div>
+        </div>
+        <img src="wa1.png" class="testi-img" alt="WhatsApp reactions" data-lb-group="wa">
+        <div class="testi-footer">
+          <div class="testi-quote">🔥 "Woah amazing damn" • "Nice I like it" • "We're gonna test the content & run ads"</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-header">
+          <svg width="18" height="18" fill="#25D366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div>
+            <div class="testi-header-text">WhatsApp — After AI Creative Delivery</div>
+            <div class="testi-header-sub">Client approved instantly</div>
+          </div>
+        </div>
+        <img src="wa2.png" class="testi-img" alt="Client approved" data-lb-group="wa">
+        <div class="testi-footer">
+          <div class="testi-quote">✅ Client approved AI UGC video immediately after delivery</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORK SAMPLES ── -->
+<section id="work-samples" class="work-section">
+  <div class="container">
+    <div class="label-line">Portfolio</div>
+    <h2 class="display" style="font-size:clamp(40px,5vw,68px)">
+      WORK<br>
+      <span style="color:var(--accent)">SAMPLES.</span>
+    </h2>
+    <p style="color:var(--text-muted);font-size:15px;margin-top:16px">AI Creatives · Ad Campaigns · UGC Content · Brand Visuals</p>
+    <div class="work-grid">
+      <!-- IG Grid -->
+      <div>
+        <div class="ig-profile-header">
+          <div class="ig-profile-icon">
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <div>
+            <div class="ig-handle">@umairr.studio</div>
+            <div class="ig-handle-sub">AI Creative Agency Portfolio</div>
+          </div>
+        </div>
+        <div class="ig-grid" id="ig-grid">
+          <div class="ig-item" data-lb-group="ig" data-src="ig1.png"><img src="ig1.png" alt="Pink bottle product visual"><div class="ig-item-overlay"><span>Product Visual</span></div></div>
+          <div class="ig-item" data-lb-group="ig" data-src="ig2.png"><img src="ig2.png" alt="Sunscreen ad"><div class="ig-item-overlay"><span>Product Ad</span></div></div>
+          <div class="ig-item" data-lb-group="ig" data-src="ig3.png"><img src="ig3.png" alt="Beauty lips creative"><div class="ig-item-overlay"><span>Beauty Creative</span></div></div>
+          <div class="ig-item" data-lb-group="ig" data-src="ig4.png"><img src="ig4.png" alt="Flawless skin"><div class="ig-item-overlay"><span>Skincare Ad</span></div></div>
+          <div class="ig-item" data-lb-group="ig" data-src="ig5.png"><img src="ig5.png" alt="AI avatar"><div class="ig-item-overlay"><span>AI Avatar</span></div></div>
+          <div class="ig-item" data-lb-group="ig" data-src="ig6.png"><img src="ig6.png" alt="Glow jar beauty"><div class="ig-item-overlay"><span>UGC Ad</span></div></div>
+        </div>
+        <a href="https://www.instagram.com/umairr.studio/" target="_blank" class="ig-btn">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          View Full Portfolio on Instagram
+        </a>
+      </div>
+      <!-- AI Creatives -->
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+          <div style="width:28px;height:28px;background:var(--accent);border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:11px;color:#000">AI</div>
+          <div>
+            <div style="font-weight:700;font-size:14px;color:#fff">Live AI Creatives</div>
+            <div style="font-size:12px;color:var(--text-muted)">Made with Higgsfield, Seedream & more</div>
+          </div>
+        </div>
+        <div class="creative-stack">
+          <div class="creative-card">
+            <span class="creative-badge-top">AI UGC</span>
+            <video autoplay muted loop playsinline style="width:100%;max-height:260px;object-fit:cover;display:block">
+              <source src="ugc-fashion.mp4" type="video/mp4">
+            </video>
+            <div class="creative-card-body">
+              <div><h4>Beauty Brand UGC Ad</h4><p>AI Generated · High Converting</p></div>
+              <span class="creative-pill">Top Performer</span>
+            </div>
+          </div>
+          <div class="creative-card">
+            <span class="creative-badge-top">AI Visual</span>
+            <img src="ig6.png" alt="Glow Jar Beauty" style="width:100%;max-height:260px;object-fit:cover;display:block;cursor:zoom-in" data-lb-group="ig">
+            <div class="creative-card-body">
+              <div><h4>Skincare Product Visual</h4><p>Glow Jar Beauty · Vitamin C Serum</p></div>
+              <span class="creative-pill" style="background:rgba(168,85,247,.12);color:#c084fc">Client Work</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="https://www.instagram.com/umairr.studio/" target="_blank" class="btn-primary" style="background:#E1306C">
+        See All Work on @umairr.studio →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW I WORK ── -->
+<section>
+  <div class="container">
+    <div class="label-line">Simple Process</div>
+    <h2 class="display" style="font-size:clamp(40px,5vw,68px)">
+      HOW I<br>
+      <span style="color:var(--accent)">WORK.</span>
+    </h2>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="process-num">01</div>
+        <h3>Free Strategy Call</h3>
+        <p>We audit your brand, identify gaps, and map a growth plan — 30 mins, zero fluff.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">02</div>
+        <h3>Creative & Funnel Build</h3>
+        <p>AI-powered UGC creatives, ad copy, and funnel setup optimized for your audience.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">03</div>
+        <h3>Launch & Test</h3>
+        <p>Campaigns go live. We test fast, cut losers, and double down on winners.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">04</div>
+        <h3>Scale & Report</h3>
+        <p>Weekly reports, continuous optimization, and aggressive scaling of proven campaigns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="label-line">Get In Touch</div>
+    <h2 class="display" style="font-size:clamp(40px,5vw,68px)">
+      LET'S SCALE<br>
+      <span style="color:var(--accent)">YOUR BRAND.</span>
+    </h2>
+    <div class="contact-grid">
+      <div class="contact-links">
+        <a href="https://calendly.com/umairecomdrift/30min" target="_blank" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="none" stroke="var(--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <h4>Book a Strategy Call</h4>
+            <p>Free 30-min session on Calendly</p>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://wa.me/923085539428?text=Hi%20Umair!" target="_blank" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="#25D366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <h4>WhatsApp</h4>
+            <p>DM "SCALE" to get started</p>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="mailto:umairecomdrift@gmail.com" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="none" stroke="var(--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <h4>Email</h4>
+            <p>umairecomdrift@gmail.com</p>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://www.linkedin.com/in/umairsaleemofficial/" target="_blank" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="#0A66C2" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <h4>LinkedIn</h4>
+            <p>umairsaleemofficial</p>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://www.instagram.com/umair.ecomdrift/" target="_blank" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="#E1306C" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <h4>Instagram</h4>
+            <p>@umair.ecomdrift · 7.4K+ Community</p>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+      </div>
+      <div class="contact-cta-box">
+        <h3>SCALE YOUR<span>ECOMMERCE BRAND.</span></h3>
+        <p>Meta Ads · TikTok Ads · AI UGC · Sales Funnels. Let's build your brand's growth system and turn your ad spend into consistent, scalable revenue.</p>
+        <a href="https://calendly.com/umairecomdrift/30min" target="_blank" class="btn-primary" style="font-size:15px;padding:18px 36px">
+          Book Free Strategy Session →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">UMAIR<span>.</span></div>
+        <p class="footer-bio">I help ecommerce brands dominate their market through data-driven Meta Ads, TikTok Ads, AI-powered UGC creatives, and high-converting sales funnels. Based in Pakistan, working with brands worldwide.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/umair.ecomdrift/" target="_blank" class="social-icon" title="Personal Instagram">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/umairr.studio/" target="_blank" class="social-icon" title="Studio Instagram">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/umairsaleemofficial/" target="_blank" class="social-icon" title="LinkedIn">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:umairecomdrift@gmail.com" class="social-icon" title="Email">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col">Quick Links</h4>
+        <div class="footer-links">
+          <a href="#about">Why Choose Me</a>
+          <a href="#services">Services</a>
+          <a href="#results">Results</a>
+          <a href="#dashboards">Shopify Proof</a>
+          <a href="#client-meetings">Client Meetings</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="#work-samples">Work Samples</a>
+          <a href="https://calendly.com/umairecomdrift/30min" target="_blank" style="color:var(--accent);font-weight:700">→ Book a Strategy Call</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col">Connect</h4>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/umair.ecomdrift/" target="_blank">@umair.ecomdrift</a>
+          <a href="https://www.instagram.com/umairr.studio/" target="_blank">@umairr.studio</a>
+          <a href="https://www.linkedin.com/in/umairsaleemofficial/" target="_blank">LinkedIn</a>
+          <a href="mailto:umairecomdrift@gmail.com">umairecomdrift@gmail.com</a>
+          <a href="https://wa.me/923085539428" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Umair Saleem. All rights reserved.</p>
+      <p>Built for growth · Pakistan 🇵🇰 → Worldwide 🌍</p>
+      <a href="https://calendly.com/umairecomdrift/30min" target="_blank" style="font-size:12px;color:var(--accent);font-weight:700;text-decoration:none">Book a Free Strategy Call →</a>
+    </div>
+  </div>
+</footer>
+
 <script>
-function toggleMobileMenu(){
-    const menu=document.getElementById('mobile-menu');
-    const mi=document.getElementById('menu-icon');
-    const ci=document.getElementById('close-icon');
-    menu.classList.toggle('open');
-    mi.classList.toggle('hidden');
-    ci.classList.toggle('hidden');
+// Nav active
+const allSections=document.querySelectorAll('section[id],[id]');
+const allNavLinks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  const st=window.scrollY;
+  const dh=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('progress-bar').style.width=(st/dh*100)+'%';
+  document.getElementById('scroll-top').classList.toggle('visible',st>400);
+  let cur='';
+  allSections.forEach(s=>{if(st>=s.offsetTop-100)cur=s.id});
+  allNavLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+});
+document.getElementById('scroll-top').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+function toggleMenu(){
+  const m=document.getElementById('mobile-menu');
+  m.classList.toggle('open');
 }
 
-// Progress bar + scroll-to-top
-window.addEventListener('scroll',()=>{
-    const st=window.scrollY;
-    const dh=document.documentElement.scrollHeight-window.innerHeight;
-    document.getElementById('progress-bar').style.width=(st/dh*100)+'%';
-    const btn=document.getElementById('scroll-top');
-    if(btn)btn.classList.toggle('visible',st>400);
-});
-const stBtn=document.getElementById('scroll-top');
-if(stBtn)stBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-// Nav position (accounts for ticker bar)
-(function(){
-    const ticker=document.querySelector('.ticker-wrap');
-    const nav=document.getElementById('main-nav');
-    if(!ticker||!nav)return;
-    function pos(){nav.style.top=ticker.offsetHeight+'px';}
-    pos();
-    window.addEventListener('resize',pos);
-})();
-
-// Active nav link on scroll
-(function(){
-    const sections=document.querySelectorAll('section[id]');
-    const links=document.querySelectorAll('.nav-link');
-    window.addEventListener('scroll',()=>{
-        let cur='';
-        sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
-        links.forEach(l=>l.classList.toggle('nav-link-active',l.getAttribute('href')==='#'+cur));
-    });
-})();
+// Ticker nav position not needed — nav is always at top
 
 // Lightbox
 (function(){
-    const lb=document.getElementById('lightbox');
-    const lbImg=document.getElementById('lb-img');
-    if(!lb||!lbImg)return;
-    let pool=[],idx=0;
+  const lb=document.getElementById('lightbox');
+  const lbImg=document.getElementById('lb-img');
+  let pool=[],idx=0;
+  function getSrcs(grp){
+    return Array.from(document.querySelectorAll('[data-lb-group="'+grp+'"]'))
+      .map(el=>el.tagName==='IMG'?el.src:(el.querySelector('img')?el.querySelector('img').src:el.dataset.src||''))
+      .filter(Boolean);
+  }
+  function open(src,grp,i){pool=getSrcs(grp);idx=i;lbImg.src=src;lb.classList.add('active');document.body.style.overflow='hidden'}
+  function close(){lb.classList.remove('active');document.body.style.overflow=''}
+  function nav(d){idx=(idx+d+pool.length)%pool.length;lbImg.src=pool[idx]}
 
-    function getSrcs(group){
-        return Array.from(document.querySelectorAll('[data-lb-group="'+group+'"]'))
-            .map(el=>el.tagName==='IMG'?el.src:(el.querySelector('img')?el.querySelector('img').src:el.dataset.src||''))
-            .filter(Boolean);
-    }
+  // IG grid
+  document.querySelectorAll('#ig-grid .ig-item').forEach((el,i)=>{
+    el.addEventListener('click',()=>{const img=el.querySelector('img');if(img)open(img.src,'ig',i)});
+  });
+  // All data-lb-group images
+  document.querySelectorAll('img[data-lb-group]').forEach(img=>{
+    const grp=img.dataset.lbGroup;
+    const all=Array.from(document.querySelectorAll('img[data-lb-group="'+grp+'"]'));
+    img.addEventListener('click',()=>open(img.src,grp,all.indexOf(img)));
+  });
+  // Result cards
+  document.querySelectorAll('.result-card').forEach((card,i)=>{
+    card.addEventListener('click',()=>{const img=card.querySelector('img');if(img)open(img.src,'results',i)});
+  });
+  // Meeting cards
+  document.querySelectorAll('.meeting-img').forEach((img,i)=>{
+    img.addEventListener('click',()=>open(img.src,'meetings',i));
+  });
+  // Testi images
+  document.querySelectorAll('.testi-img').forEach((img,i)=>{
+    img.addEventListener('click',()=>open(img.src,'wa',i));
+  });
 
-    function open(src,group,i){
-        pool=getSrcs(group);
-        idx=i;
-        lbImg.src=src;
-        lb.classList.add('active');
-        document.body.style.overflow='hidden';
-    }
-    function close(){lb.classList.remove('active');document.body.style.overflow='';}
-    function nav(dir){idx=(idx+dir+pool.length)%pool.length;lbImg.src=pool[idx];}
-
-    // IG grid
-    document.querySelectorAll('#ig-grid .ig-grid-item').forEach((el,i)=>{
-        el.addEventListener('click',()=>{
-            const img=el.querySelector('img');
-            if(img)open(img.src,'ig',i);
-        });
-    });
-
-    // All images with data-lb-group
-    document.querySelectorAll('img[data-lb-group]').forEach(img=>{
-        const grp=img.dataset.lbGroup;
-        const all=Array.from(document.querySelectorAll('img[data-lb-group="'+grp+'"]'));
-        img.addEventListener('click',()=>open(img.src,grp,all.indexOf(img)));
-    });
-
-    document.getElementById('lb-close').addEventListener('click',close);
-    document.getElementById('lb-prev').addEventListener('click',()=>nav(-1));
-    document.getElementById('lb-next').addEventListener('click',()=>nav(1));
-    lb.addEventListener('click',e=>{if(e.target===lb)close();});
-    document.addEventListener('keydown',e=>{
-        if(!lb.classList.contains('active'))return;
-        if(e.key==='Escape')close();
-        if(e.key==='ArrowRight')nav(1);
-        if(e.key==='ArrowLeft')nav(-1);
-    });
+  document.getElementById('lb-close').addEventListener('click',close);
+  document.getElementById('lb-prev').addEventListener('click',()=>nav(-1));
+  document.getElementById('lb-next').addEventListener('click',()=>nav(1));
+  lb.addEventListener('click',e=>{if(e.target===lb)close()});
+  document.addEventListener('keydown',e=>{
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')close();
+    if(e.key==='ArrowRight')nav(1);
+    if(e.key==='ArrowLeft')nav(-1);
+  });
 })();
 </script>
 </body>
